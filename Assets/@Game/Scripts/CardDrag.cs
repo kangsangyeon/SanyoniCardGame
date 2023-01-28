@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private float m_DragLerpSpeed = 0.05f;
     private bool m_bDrag;
@@ -45,6 +45,7 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
             if (_cardZone)
             {
                 m_DesiredDropTarget = _cardZone.GetDropPosition();
+                _cardZone.GetOnDropEvent().Invoke(this);
             }
         }
         else

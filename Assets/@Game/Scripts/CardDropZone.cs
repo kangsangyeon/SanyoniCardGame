@@ -6,7 +6,7 @@ using UnityEngine;
 public class CardDropZone : MonoBehaviour
 {
     [SerializeField] private Transform m_DropPosition;
-    [SerializeField] private Action<Card> m_OnDropEvent;
+    [SerializeField] private Action<CardDrag> m_OnDropEvent;
 
     private void Awake()
     {
@@ -15,5 +15,5 @@ public class CardDropZone : MonoBehaviour
     }
 
     public Transform GetDropPosition() => m_DropPosition;
-    public Action<Card> GetOnDropEvent() => m_OnDropEvent;
+    public Action<CardDrag> GetOnDropEvent() => m_OnDropEvent;
 }
