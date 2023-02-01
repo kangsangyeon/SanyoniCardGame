@@ -8,35 +8,38 @@ using UnityEngine.UI;
 public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private float m_DragLerpSpeed = 0.05f;
+    
     private bool m_bDrag;
     private Vector2 m_DragOffset;
-    private Vector2 m_DragTargetPosition;
-    private Transform m_DesiredDropTarget;
+    private Vector2 m_DesiredPosition;
+    private Transform m_DesiredDropPosition;
     private List<Collider2D> m_OverlappedTriggerList = new List<Collider2D>();
+
+    public Vector2 SetDesiredPosition(Vector2 _position) => m_DesiredPosition = _position;
 
     private void Start()
     {
-        m_DragTargetPosition = transform.position;
+        m_DesiredPosition = transform.position;
     }
 
     private void Update()
     {
-        float _abs = Mathf.Abs(Vector2.Distance(transform.position, m_DragTargetPosition));
+        float _abs = Mathf.Abs(Vector2.Distance(transform.position, m_DesiredPosition));
         if (_abs > 0.0001f)
         {
-            transform.position = Vector2.Lerp(transform.position, m_DragTargetPosition, m_DragLerpSpeed);
+            transform.position = Vector2.Lerp(transform.position, m_DesiredPosition, m_DragLerpSpeed);
         }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log(name);
+        m_bDrag = true;
         m_DragOffset = (Vector2)transform.position - eventData.position;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        m_DragTargetPosition = eventData.position + m_DragOffset;
+        m_DesiredPosition = eventData.position + m_DragOffset;
 
         if (m_OverlappedTriggerList.Count > 0)
         {
@@ -44,13 +47,14 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             var _cardZone = _trigger.GetComponent<CardDropZone>();
             if (_cardZone)
             {
-                m_DesiredDropTarget = _cardZone.GetDropPosition();
-                _cardZone.GetOnDropEvent().Invoke(this);
+                m_DesiredDropPosition = _cardZone.GetDropPosition();
+                if (_cardZone.GetOnDropEvent() != null)
+                    _cardZone.GetOnDropEvent().Invoke(this);
             }
         }
         else
         {
-            m_DesiredDropTarget = null;
+            m_DesiredDropPosition = null;
         }
 
         // 겹친 오브젝트들에 대해, 얼만큼 겹쳐있는지에 대한 퍼센티지를 계산합니다.
@@ -60,10 +64,11 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (m_DesiredDropTarget)
+        m_bDrag = false;
+        if (m_DesiredDropPosition)
         {
-            m_DragTargetPosition = m_DesiredDropTarget.position;
-            m_DesiredDropTarget = null;
+            m_DesiredPosition = m_DesiredDropPosition.position;
+            m_DesiredDropPosition = null;
         }
     }
 
