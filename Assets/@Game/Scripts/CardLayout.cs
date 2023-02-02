@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using SanyoniLib.Bezier;
 using UnityEngine;
@@ -11,24 +9,38 @@ public class CardLayout : MonoBehaviour
     [SerializeField] private float m_CardMouseOverUp = 200;
     [SerializeField] private Bezier m_Bezier;
     [SerializeField] private List<CardDrag> m_CardList;
-
+    
     public void AddCard(CardDrag _card)
     {
         Assert.IsTrue(m_CardList.Contains(_card) == false);
         m_CardList.Add(_card);
         _card.OnDropZoneEvent += OnCardDropZone;
+        RefreshCardRenderOrder();
     }
-    
+
     public void RemoveCard(CardDrag _card)
     {
         Assert.IsTrue(m_CardList.Contains(_card) == true);
         m_CardList.Remove(_card);
         _card.OnDropZoneEvent -= OnCardDropZone;
+        RefreshCardRenderOrder();
+    }
+
+    private void RefreshCardRenderOrder()
+    {
+        for (int i = 0; i < m_CardList.Count; ++i)
+        {
+            var _renderOrder = m_CardList[i].GetComponent<CardRenderOrder>();
+            _renderOrder.SetRenderOrder(m_CardList.Count - i);
+            _renderOrder.SetLayerAsHand();
+        }
     }
 
     private void Start()
     {
-        m_CardList.ForEach(card => { card.OnDropZoneEvent += OnCardDropZone; });
+        List<CardDrag> _cardList = new List<CardDrag>(m_CardList);
+        m_CardList.Clear();
+        _cardList.ForEach(AddCard);
     }
 
     private void Update()
