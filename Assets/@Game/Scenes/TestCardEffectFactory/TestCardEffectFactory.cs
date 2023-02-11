@@ -6,8 +6,14 @@ public class TestCardEffectFactory : MonoBehaviour
 {
     void Start()
     {
-        string _content = "CardOperation_Test(1, 2, 3);" +
-                          "CardOperation_Test(3, 2, 1);";
+        string _content = "case:" +
+                          "CardOperation_Test(1, 2, 3);" +
+                          "CardOperation_Test(3, 2, 1);" +
+                          "endcase" +
+                          "case:" +
+                          "CardOperation_Test(10, 20, 30);" +
+                          "CardOperation_Test(30, 20, 10);" +
+                          "endcase";
         CardEffectFactory.Create(_content);
     }
 }

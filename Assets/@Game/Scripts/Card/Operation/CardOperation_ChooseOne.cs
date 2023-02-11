@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class CardOperation_ChooseOne : CardOperationBase
 {
-    public List<CardEffect> m_EffectList;
+    public List<CardEffect> m_EffectList = new List<CardEffect>();
 
     public override IEnumerator Perform(Card _owner)
     {

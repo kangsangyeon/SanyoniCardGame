@@ -18,7 +18,7 @@ public class CardEffectFactory
             {
                 int _endCaseIndex = _content.IndexOf("endcase");
                 int _caseContentCount = _endCaseIndex - 5;
-                string _caseContent = _content.Substring(5, _caseContentCount); // case: 이후부터 endcase 이전의 문자열을 가져옵니다.
+                string _caseContent = _content.Substring(5, _caseContentCount); // "case:" 이후부터 "endcase" 이전의 문자열을 가져옵니다.
 
                 if (_chooseOne == null)
                 {
@@ -28,7 +28,7 @@ public class CardEffectFactory
                 CardEffect _caseEffect = Create(_caseContent);
                 _chooseOne.m_EffectList.Add(_caseEffect);
 
-                _content = _content.Substring(_endCaseIndex + 1);
+                _content = _content.Substring(_endCaseIndex + 7); // "endcase" 이후의 내용을 읽습니다.
             }
             else
             {
