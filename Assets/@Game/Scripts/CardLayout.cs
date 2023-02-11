@@ -8,21 +8,21 @@ public class CardLayout : MonoBehaviour
     [SerializeField] private float m_BezierCenterDown = 4000;
     [SerializeField] private float m_CardMouseOverUp = 200;
     [SerializeField] private Bezier m_Bezier;
-    [SerializeField] private List<CardDrag> m_CardList;
-    
-    public void AddCard(CardDrag _card)
+    [SerializeField] private List<Card> m_CardList;
+
+    public void AddCard(Card _card)
     {
         Assert.IsTrue(m_CardList.Contains(_card) == false);
         m_CardList.Add(_card);
-        _card.OnDropZoneEvent += OnCardDropZone;
+        _card.GetDrag().OnDropZoneEvent += OnCardDropZone;
         RefreshCardRenderOrder();
     }
 
-    public void RemoveCard(CardDrag _card)
+    public void RemoveCard(Card _card)
     {
         Assert.IsTrue(m_CardList.Contains(_card) == true);
         m_CardList.Remove(_card);
-        _card.OnDropZoneEvent -= OnCardDropZone;
+        _card.GetDrag().OnDropZoneEvent -= OnCardDropZone;
         RefreshCardRenderOrder();
     }
 
@@ -30,7 +30,7 @@ public class CardLayout : MonoBehaviour
     {
         for (int i = 0; i < m_CardList.Count; ++i)
         {
-            var _renderOrder = m_CardList[i].GetComponent<CardRenderOrder>();
+            var _renderOrder = m_CardList[i].GetRenderOrder();
             _renderOrder.SetRenderOrder(m_CardList.Count - i);
             _renderOrder.SetLayerAsHand();
         }
@@ -38,7 +38,7 @@ public class CardLayout : MonoBehaviour
 
     private void Start()
     {
-        List<CardDrag> _cardList = new List<CardDrag>(m_CardList);
+        List<Card> _cardList = new List<Card>(m_CardList);
         m_CardList.Clear();
         _cardList.ForEach(AddCard);
     }
@@ -50,9 +50,9 @@ public class CardLayout : MonoBehaviour
         float _interval = 1.0f / (m_CardList.Count + 1);
         for (int i = 0; i < m_CardList.Count; ++i)
         {
-            CardDrag _card = m_CardList[i];
+            Card _card = m_CardList[i];
 
-            if (_card.IsDrag())
+            if (_card.GetDrag().IsDrag())
                 return;
 
             float _delta = _interval * (1 + i);
@@ -61,10 +61,12 @@ public class CardLayout : MonoBehaviour
             Vector2 _desiredPosition;
             Quaternion _desiredRotation;
 
-            if (_card.IsMouseOver())
+            if (_card.GetDrag().IsMouseOver())
             {
                 _desiredPosition = _position + Vector2.up * m_CardMouseOverUp;
                 _desiredRotation = Quaternion.identity;
+
+                _card.GetRenderOrder().SetRenderOrder(100);
             }
             else
             {
@@ -76,8 +78,8 @@ public class CardLayout : MonoBehaviour
                 _desiredRotation = _rotation;
             }
 
-            m_CardList[i].SetDesiredPosition(_desiredPosition);
-            m_CardList[i].SetDesiredRotation(_desiredRotation);
+            m_CardList[i].GetDrag().SetDesiredPosition(_desiredPosition);
+            m_CardList[i].GetDrag().SetDesiredRotation(_desiredRotation);
 
             Debug.DrawLine(_position, _desiredPosition, Color.blue);
             Debug.DrawLine(_bezierCenter, _position, Color.red);
@@ -86,6 +88,6 @@ public class CardLayout : MonoBehaviour
 
     private void OnCardDropZone(CardDrag _card, CardDropZone _zone)
     {
-        RemoveCard(_card);
+        RemoveCard(_card.GetComponent<Card>());
     }
 }
