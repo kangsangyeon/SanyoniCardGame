@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class CardEffectFactory
 {
@@ -38,7 +39,7 @@ public class CardEffectFactory
 
                 string _operationType = _content.Substring(0, _paramStartIndex);
                 string _argString = _content.Substring(_paramStartIndex + 1, _paramEndIndex - _paramStartIndex - 1);
-                List<string> _args = new List<string>(_argString.Split(","));
+                List<string> _args = new List<string>(_argString.Split(",").Select(s => s.Trim()));
 
                 var _operation = Create(_operationType, _args);
                 _effect.m_OperationSequence.Add(_operation);
