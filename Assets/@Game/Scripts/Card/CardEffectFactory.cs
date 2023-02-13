@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class CardEffectFactory
 {
@@ -23,7 +24,7 @@ public class CardEffectFactory
 
                 if (_chooseOne == null)
                 {
-                    _chooseOne = new CardOperation_ChooseOne();
+                    _chooseOne = ScriptableObject.CreateInstance<CardOperation_ChooseOne>();
                 }
 
                 CardEffect _caseEffect = Create(_caseContent);
@@ -57,7 +58,7 @@ public class CardEffectFactory
     private static CardOperationBase Create(string _type, List<string> _args)
     {
         Type _t = Type.GetType(_type);
-        CardOperationBase _operation = Activator.CreateInstance(_t) as CardOperationBase;
+        CardOperationBase _operation = ScriptableObject.CreateInstance(_t) as CardOperationBase;
         _operation.SetArguments(_args);
         return _operation;
     }

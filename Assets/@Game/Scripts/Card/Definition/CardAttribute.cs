@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "SanyoniCardGame/Card")]
 public class CardAttribute : ScriptableObject
 {
     [SerializeField] private string m_Name;

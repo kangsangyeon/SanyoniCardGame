@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public abstract class CardOperationBase
+[System.Serializable]
+public abstract class CardOperationBase : ScriptableObject
 {
     public abstract IEnumerator Perform(Card _owner);
     protected List<string> m_Arguments;
