@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5242ce1f2c8f0b4992db48b27b60ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Attribute: {fileID: 11400000, guid: 63c4a0cfec943b3408057e51b989d987, type: 2}
   m_Drag: {fileID: 4783609707149257635}
   m_RenderOrder: {fileID: 4783609707149257633}
 --- !u!1 &4783609707227565162

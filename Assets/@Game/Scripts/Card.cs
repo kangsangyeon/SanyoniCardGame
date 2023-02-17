@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    [SerializeField] private CardAttribute m_Attribute;
     [SerializeField] private CardDrag m_Drag;
     [SerializeField] private CardRenderOrder m_RenderOrder;
 
@@ -12,4 +13,9 @@ public class Card : MonoBehaviour
 
     public CardDrag GetDrag() => m_Drag;
     public CardRenderOrder GetRenderOrder() => m_RenderOrder;
+
+    public override string ToString()
+    {
+        return m_Attribute.GetCardName();
+    }
 }
