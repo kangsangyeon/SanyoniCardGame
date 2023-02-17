@@ -2,5 +2,5 @@
 
 public class CardField
 {
-    private List<Card> m_CardList = new List<Card>();
+    private List<CardGameObject> m_CardList = new List<CardGameObject>();
 }

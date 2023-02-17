@@ -8,20 +8,20 @@ using UnityEngine.EventSystems;
 public class CardDummy : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private bool m_Ordered;
-    private List<Card> m_Cards = new List<Card>();
+    private List<CardGameObject> m_Cards = new List<CardGameObject>();
 
-    public List<Card> GetCardList() => m_Cards;
+    public List<CardGameObject> GetCardList() => m_Cards;
 
-    public void AddCard(Card _card)
+    public void AddCard(CardGameObject _cardGameObject)
     {
-        Assert.IsTrue(m_Cards.Contains(_card) == false);
-        m_Cards.Add(_card);
+        Assert.IsTrue(m_Cards.Contains(_cardGameObject) == false);
+        m_Cards.Add(_cardGameObject);
     }
 
-    public void RemoveCard(Card _card)
+    public void RemoveCard(CardGameObject _cardGameObject)
     {
-        Assert.IsTrue(m_Cards.Contains(_card));
-        m_Cards.Remove(_card);
+        Assert.IsTrue(m_Cards.Contains(_cardGameObject));
+        m_Cards.Remove(_cardGameObject);
     }
 
     public override string ToString()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card : MonoBehaviour
+public class CardGameObject : MonoBehaviour
 {
     [SerializeField] private CardAttribute m_Attribute;
     [SerializeField] private CardDrag m_Drag;

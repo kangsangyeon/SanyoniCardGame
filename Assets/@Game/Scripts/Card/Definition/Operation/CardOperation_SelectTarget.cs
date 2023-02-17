@@ -9,7 +9,7 @@ public class CardOperatino_SelectTarget_FromOrdered : CardOperationBase
     private int m_Count;
     private bool m_FromUpside;
 
-    public override IEnumerator Perform(Card _owner)
+    public override IEnumerator Perform(CardGameObject _owner)
     {
         // m_TargetType = Enum.Parse<EPlayerType>(m_Arguments[0]);
         // m_OrderedDummyType = Enum.Parse<EOrderedDummyType>(m_Arguments[1]);

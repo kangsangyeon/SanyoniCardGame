@@ -5,7 +5,7 @@ public class CardOperation_ChooseOne : CardOperationBase
 {
     public List<CardEffect> m_EffectList = new List<CardEffect>();
 
-    public override IEnumerator Perform(Card _owner)
+    public override IEnumerator Perform(CardGameObject _owner)
     {
         // Effect 중 하나를 고릅니다.
 

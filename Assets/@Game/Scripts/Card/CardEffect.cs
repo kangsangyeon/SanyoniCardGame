@@ -7,7 +7,7 @@ public class CardEffect
 {
     public List<CardOperationBase> m_OperationSequence = new List<CardOperationBase>();
 
-    public IEnumerator Perform(Card _owner)
+    public IEnumerator Perform(CardGameObject _owner)
     {
         Assert.IsTrue(m_OperationSequence.Count != 0);
         foreach (var _operation in m_OperationSequence)

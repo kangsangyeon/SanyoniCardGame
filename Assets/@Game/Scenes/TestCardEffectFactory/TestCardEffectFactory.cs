@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestCardEffectFactory : MonoBehaviour
 {
-    [SerializeField] private Card _card;
+    [SerializeField] private CardGameObject cardGameObject;
 
     void Start()
     {
@@ -17,6 +17,6 @@ public class TestCardEffectFactory : MonoBehaviour
                           "CardOperation_Test(30, 20, 10);" +
                           "endcase";
         var _cardEffect = CardEffectFactory.Create(_content);
-        _card.StartCoroutine(_cardEffect.Perform(_card));
+        cardGameObject.StartCoroutine(_cardEffect.Perform(cardGameObject));
     }
 }

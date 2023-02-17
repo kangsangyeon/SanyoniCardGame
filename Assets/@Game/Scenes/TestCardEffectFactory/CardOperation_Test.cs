@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardOperation_Test : CardOperationBase
 {
-    public override IEnumerator Perform(Card _owner)
+    public override IEnumerator Perform(CardGameObject _owner)
     {
         string _args = String.Empty;
         m_Arguments.ForEach(arg => _args += arg);

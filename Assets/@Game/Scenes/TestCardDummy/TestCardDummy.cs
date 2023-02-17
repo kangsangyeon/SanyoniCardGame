@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestCardDummy : MonoBehaviour
 {
     [SerializeField] private CardDummy m_Dummy;
-    [SerializeField] private List<Card> m_CardList;
+    [SerializeField] private List<CardGameObject> m_CardList;
     
     private void Start()
     {
