@@ -5,10 +5,15 @@ using UnityEngine;
 public class TestCardDummy : MonoBehaviour
 {
     [SerializeField] private CardDummy m_Dummy;
-    [SerializeField] private List<CardGameObject> m_CardList;
-    
+    [SerializeField] private List<CardAttribute> m_CardAttributeList;
+
     private void Start()
     {
-        m_CardList.ForEach(c=>m_Dummy.AddCard(c));
+        m_CardAttributeList.ForEach(a =>
+        {
+            Card _card = new Card();
+            _card.SetAttribute(a);
+            m_Dummy.AddCard(_card);
+        });
     }
 }

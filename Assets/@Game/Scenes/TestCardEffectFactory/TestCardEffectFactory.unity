@@ -404,4 +404,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d00cecca6c295e4e88ce81310569502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _card: {fileID: 333414144}
+  cardGameObject: {fileID: 333414144}

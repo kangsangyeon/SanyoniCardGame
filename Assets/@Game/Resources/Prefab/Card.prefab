@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4783609706899181132}
   - component: {fileID: 4783609706899181135}
   m_Layer: 0
-  m_Name: Text (TMP) (1)
+  m_Name: Txt_Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 4783609707149257635}
   - component: {fileID: 4783609707149257633}
   - component: {fileID: 822150063946796063}
+  - component: {fileID: 3760239671416496670}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -261,6 +262,22 @@ MonoBehaviour:
   m_Attribute: {fileID: 11400000, guid: 63c4a0cfec943b3408057e51b989d987, type: 2}
   m_Drag: {fileID: 4783609707149257635}
   m_RenderOrder: {fileID: 4783609707149257633}
+  m_UI: {fileID: 3760239671416496670}
+--- !u!114 &3760239671416496670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783609707149257628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f3d685d57cf174893324bdbccf96cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Text_CardName: {fileID: 4783609707894579138}
+  m_Text_Description: {fileID: 4783609706899181135}
+  m_Image_Thumbnail: {fileID: 4783609708708492282}
 --- !u!1 &4783609707227565162
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +428,7 @@ GameObject:
   - component: {fileID: 4783609707894579139}
   - component: {fileID: 4783609707894579138}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Txt_Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -546,7 +563,7 @@ GameObject:
   - component: {fileID: 4783609708708492283}
   - component: {fileID: 4783609708708492282}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Img_Thumbnail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

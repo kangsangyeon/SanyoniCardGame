@@ -5,16 +5,18 @@ using UnityEngine;
 public class CardAttribute : ScriptableObject
 {
     [SerializeField] private string m_CardName;
-    [SerializeField] private Texture2D m_Thumbnail;
+    [SerializeField] private Sprite m_Thumbnail;
     [SerializeField] private int m_Cost;
     [SerializeField] private ECardType m_Type;
+    [SerializeField] private string m_Description;
     [SerializeField] private CardPrerequisite m_Prerequisite;
     [SerializeField] private List<CardOperationBase> m_OperationSequence;
 
     public string GetCardName() => m_CardName;
-    public Texture2D GetThumbnail() => m_Thumbnail;
+    public Sprite GetThumbnail() => m_Thumbnail;
     public int GetCost() => m_Cost;
     public ECardType GetType() => m_Type;
+    public string GetDescription() => m_Description;
     public CardPrerequisite GetPrerequisite() => m_Prerequisite;
     public List<CardOperationBase> GetOperationSequence() => m_OperationSequence;
 }

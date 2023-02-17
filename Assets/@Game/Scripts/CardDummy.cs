@@ -8,24 +8,27 @@ using UnityEngine.EventSystems;
 public class CardDummy : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private bool m_Ordered;
-    private List<CardGameObject> m_Cards = new List<CardGameObject>();
+    private List<Card> m_Cards = new List<Card>();
 
-    public List<CardGameObject> GetCardList() => m_Cards;
+    public List<Card> GetCardList() => m_Cards;
 
-    public void AddCard(CardGameObject _cardGameObject)
+    public void AddCard(Card _card)
     {
-        Assert.IsTrue(m_Cards.Contains(_cardGameObject) == false);
-        m_Cards.Add(_cardGameObject);
+        Assert.IsTrue(m_Cards.Contains(_card) == false);
+        m_Cards.Add(_card);
     }
 
-    public void RemoveCard(CardGameObject _cardGameObject)
+    public void RemoveCard(Card _card)
     {
-        Assert.IsTrue(m_Cards.Contains(_cardGameObject));
-        m_Cards.Remove(_cardGameObject);
+        Assert.IsTrue(m_Cards.Contains(_card));
+        m_Cards.Remove(_card);
     }
 
     public override string ToString()
     {
+        if (m_Cards.Count == 0)
+            return "{empty}";
+
         StringBuilder _outString = new StringBuilder("{");
         for (int i = 0; i < m_Cards.Count - 1; ++i)
             _outString.AppendFormat("{0},", m_Cards[i].ToString());
