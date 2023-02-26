@@ -6,6 +6,7 @@ public class TestCardDummy : MonoBehaviour
 {
     [SerializeField] private CardDummy m_Dummy;
     [SerializeField] private List<CardAttribute> m_CardAttributeList;
+    [SerializeField] private CardDummyUI m_DummyUI;
 
     private void Start()
     {
@@ -15,5 +16,7 @@ public class TestCardDummy : MonoBehaviour
             _card.SetAttribute(a);
             m_Dummy.AddCard(_card);
         });
+
+        m_Dummy.GetOnClickEvent().AddListener(() => { m_DummyUI.Show("테스트 카드 더미", m_Dummy); });
     }
 }

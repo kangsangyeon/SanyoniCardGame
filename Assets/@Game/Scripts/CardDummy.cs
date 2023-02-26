@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class CardDummy : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private bool m_Ordered;
     private List<Card> m_Cards = new List<Card>();
+    private UnityEvent m_OnClickEvent = new UnityEvent();
 
     public List<Card> GetCardList() => m_Cards;
+    public UnityEvent GetOnClickEvent() => m_OnClickEvent;
 
     public void AddCard(Card _card)
     {
@@ -41,5 +44,6 @@ public class CardDummy : MonoBehaviour, IPointerClickHandler
         // 카드 목록 UI를 표시합니다.
         // TODO: 임시적으로, 카드 목록을 Debug string으로 출력합니다.
         Debug.Log(this.ToString());
+        m_OnClickEvent.Invoke();
     }
 }
