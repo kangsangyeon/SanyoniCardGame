@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '{{CardDescription}}'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b1e873f22d010864994cd4b49f283c11, type: 2}
+  m_sharedMaterial: {fileID: 8768904175530613205, guid: b1e873f22d010864994cd4b49f283c11, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -259,7 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5242ce1f2c8f0b4992db48b27b60ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Attribute: {fileID: 11400000, guid: 63c4a0cfec943b3408057e51b989d987, type: 2}
   m_Drag: {fileID: 4783609707149257635}
   m_RenderOrder: {fileID: 4783609707149257633}
   m_UI: {fileID: 3760239671416496670}
@@ -484,8 +483,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '{{CardName}}'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b1e873f22d010864994cd4b49f283c11, type: 2}
+  m_sharedMaterial: {fileID: 8768904175530613205, guid: b1e873f22d010864994cd4b49f283c11, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -509,7 +508,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.75
+  m_fontSize: 25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
