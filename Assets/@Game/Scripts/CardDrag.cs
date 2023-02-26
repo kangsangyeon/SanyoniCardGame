@@ -1,42 +1,70 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] private CardGameObject m_CardGO;
     [SerializeField] private float m_DragLerpSpeed = 0.05f;
     [SerializeField] private float m_RotateLerpSpeed = 0.1f;
 
     private bool m_bMouseOver;
     private bool m_bDrag;
+    private bool m_bMovingPrevFrame;
     private Vector2 m_DragOffset;
     private Vector2 m_DesiredPosition;
     private Quaternion m_DesiredRotation;
     private CardDropZone m_DesiredDropZone;
     private List<Collider2D> m_OverlappedTriggerList = new List<Collider2D>();
-    private UnityAction<CardDrag, CardDropZone> m_OnDropZoneEvent;
+    private UnityEvent<CardDrag, CardDropZone> m_OnDropZoneEvent = new UnityEvent<CardDrag, CardDropZone>();
+    private UnityEvent<CardDrag> m_OnEndMovementEvent = new UnityEvent<CardDrag>();
 
+    public Card GetCard() => m_CardGO.GetCard();
     public bool IsMouseOver() => m_bMouseOver;
     public bool IsDrag() => m_bDrag;
     public void SetDesiredPosition(Vector2 _position) => m_DesiredPosition = _position;
     public void SetDesiredRotation(Quaternion _rotation) => m_DesiredRotation = _rotation;
 
-    public UnityAction<CardDrag, CardDropZone> OnDropZoneEvent
-    {
-        get => m_OnDropZoneEvent;
-        set => m_OnDropZoneEvent = value;
-    }
+    public UnityEvent<CardDrag, CardDropZone> GetOnDropZoneEvent() => m_OnDropZoneEvent;
+    public UnityEvent<CardDrag> GetOnEndMovementEvent() => m_OnEndMovementEvent;
 
     private void Start()
     {
         m_DesiredPosition = transform.position;
     }
 
+    private void OnEnable()
+    {
+        m_DesiredPosition = transform.position;
+    }
+
     private void Update()
     {
-        transform.position = Vector2.Lerp(transform.position, m_DesiredPosition, m_DragLerpSpeed);
-        transform.rotation = Quaternion.Slerp(transform.rotation, m_DesiredRotation, m_RotateLerpSpeed);
+        bool _bMoving = false;
+        float _distance = Vector2.Distance(transform.position, m_DesiredPosition);
+        if (_distance > 0.001f)
+        {
+            transform.position = Vector2.Lerp(transform.position, m_DesiredPosition, m_DragLerpSpeed);
+            _bMoving |= true;
+        }
+
+        float _angleDifference = Quaternion.Angle(transform.rotation, m_DesiredRotation);
+        if (_angleDifference > 0.001f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, m_DesiredRotation, m_RotateLerpSpeed);
+            _bMoving |= true;
+        }
+
+        if (m_bMovingPrevFrame == true && _bMoving == false)
+        {
+            // 카드 움직임이 멈추었을 때 실행됩니다.
+            m_OnEndMovementEvent.Invoke(this);
+        }
+
+        m_bMovingPrevFrame = _bMoving;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

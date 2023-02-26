@@ -13,6 +13,7 @@ public class CardGameObject : MonoBehaviour
     private List<CardOperationBase> m_EffectSequence;
     private int m_Cost;
 
+    public Card GetCard() => m_Card;
     public CardDrag GetDrag() => m_Drag;
     public CardRenderOrder GetRenderOrder() => m_RenderOrder;
 

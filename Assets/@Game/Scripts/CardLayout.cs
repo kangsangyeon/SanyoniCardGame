@@ -14,7 +14,7 @@ public class CardLayout : MonoBehaviour
     {
         Assert.IsTrue(m_CardList.Contains(_cardGameObject) == false);
         m_CardList.Add(_cardGameObject);
-        _cardGameObject.GetDrag().OnDropZoneEvent += OnCardDropZone;
+        _cardGameObject.GetDrag().GetOnDropZoneEvent().AddListener(OnCardDropZone);
         RefreshCardRenderOrder();
     }
 
@@ -22,7 +22,7 @@ public class CardLayout : MonoBehaviour
     {
         Assert.IsTrue(m_CardList.Contains(_cardGameObject) == true);
         m_CardList.Remove(_cardGameObject);
-        _cardGameObject.GetDrag().OnDropZoneEvent -= OnCardDropZone;
+        _cardGameObject.GetDrag().GetOnDropZoneEvent().AddListener(OnCardDropZone);
         RefreshCardRenderOrder();
     }
 

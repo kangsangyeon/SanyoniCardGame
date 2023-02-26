@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CardDropZone : MonoBehaviour
 {
     [SerializeField] private Transform m_DropPosition;
-    [SerializeField] private Action<CardDrag> m_OnDropEvent;
+    [SerializeField] private UnityEvent<CardDrag> m_OnDropEvent;
 
     private void Awake()
     {
@@ -15,5 +14,5 @@ public class CardDropZone : MonoBehaviour
     }
 
     public Transform GetDropPosition() => m_DropPosition;
-    public Action<CardDrag> GetOnDropEvent() => m_OnDropEvent;
+    public UnityEvent<CardDrag> GetOnDropEvent() => m_OnDropEvent;
 }
