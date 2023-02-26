@@ -6,7 +6,7 @@ public class TestCardDummy : MonoBehaviour
 {
     [SerializeField] private CardDummy m_Dummy;
     [SerializeField] private List<CardAttribute> m_CardAttributeList;
-    [SerializeField] private CardDummyUI m_DummyUI;
+    [SerializeField] private UI_CardDummy m_DummyUI;
 
     private void Start()
     {

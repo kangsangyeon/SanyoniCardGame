@@ -7,7 +7,7 @@ public class CardGameObject : MonoBehaviour
 {
     [SerializeField] private CardDrag m_Drag;
     [SerializeField] private CardRenderOrder m_RenderOrder;
-    [SerializeField] private CardUI m_UI;
+    [SerializeField] private UI_Card m_UI;
 
     private Card m_Card;
     private List<CardOperationBase> m_EffectSequence;

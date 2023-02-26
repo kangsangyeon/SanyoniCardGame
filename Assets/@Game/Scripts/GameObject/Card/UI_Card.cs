@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardUI : MonoBehaviour
+public class UI_Card : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_Text_CardName;
     [SerializeField] private TextMeshProUGUI m_Text_Description;
