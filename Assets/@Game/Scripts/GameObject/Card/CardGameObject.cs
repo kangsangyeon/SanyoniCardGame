@@ -23,7 +23,12 @@ public class CardGameObject : MonoBehaviour
             return;
 
         m_Card = _card;
-        m_UI.Set(_card.GetAttribute());
+        m_UI.Refresh(_card.GetAttribute());
+    }
+
+    public override string ToString()
+    {
+        return m_Card.GetAttribute().GetCardName();
     }
 
     private void Start()
@@ -35,10 +40,5 @@ public class CardGameObject : MonoBehaviour
             m_Card = null;
             SetCard(_card);
         }
-    }
-
-    public override string ToString()
-    {
-        return m_Card.GetAttribute().GetCardName();
     }
 }

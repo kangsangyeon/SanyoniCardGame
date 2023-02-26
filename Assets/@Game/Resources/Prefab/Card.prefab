@@ -146,9 +146,9 @@ GameObject:
   - component: {fileID: 4783609707149257629}
   - component: {fileID: 4783609707149257634}
   - component: {fileID: 4783609707149257632}
+  - component: {fileID: 822150063946796063}
   - component: {fileID: 4783609707149257635}
   - component: {fileID: 4783609707149257633}
-  - component: {fileID: 822150063946796063}
   - component: {fileID: 3760239671416496670}
   m_Layer: 0
   m_Name: Card
@@ -220,34 +220,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4783609707149257635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4783609707149257628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa6b2479331fcd4ba23feeb03ca4f67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_DragLerpSpeed: 0.05
-  m_RotateLerpSpeed: 0.1
-  m_CardGO: {fileID: 822150063946796063}
---- !u!114 &4783609707149257633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4783609707149257628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 548412cbc433d3140a9f785c5bb6bf99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Canvas: {fileID: 4783609707227565160}
 --- !u!114 &822150063946796063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +235,34 @@ MonoBehaviour:
   m_Drag: {fileID: 4783609707149257635}
   m_RenderOrder: {fileID: 4783609707149257633}
   m_UI: {fileID: 3760239671416496670}
+--- !u!114 &4783609707149257635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783609707149257628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa6b2479331fcd4ba23feeb03ca4f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CardGO: {fileID: 822150063946796063}
+  m_DragLerpSpeed: 0.05
+  m_RotateLerpSpeed: 0.1
+--- !u!114 &4783609707149257633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783609707149257628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 548412cbc433d3140a9f785c5bb6bf99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Canvas: {fileID: 4783609707227565160}
 --- !u!114 &3760239671416496670
 MonoBehaviour:
   m_ObjectHideFlags: 0

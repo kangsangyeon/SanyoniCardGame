@@ -22,12 +22,6 @@ public class CardDummyUI : MonoBehaviour
 
         return _selectedCardList;
     }
-    
-    private void Awake()
-    {
-        m_UIParent.SetActive(false);
-        DestroyAllChild();
-    }
 
     public void Show(string _title, CardDummy _dummy)
     {
@@ -63,5 +57,11 @@ public class CardDummyUI : MonoBehaviour
     {
         for (int i = m_LayoutParent.transform.childCount - 1; i >= 0; --i)
             Destroy(m_LayoutParent.transform.GetChild(i).gameObject);
+    }
+    
+    private void Awake()
+    {
+        m_UIParent.SetActive(false);
+        DestroyAllChild();
     }
 }

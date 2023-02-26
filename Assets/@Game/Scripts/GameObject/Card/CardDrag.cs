@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -22,7 +20,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private UnityEvent<CardDrag, CardDropZone> m_OnDropZoneEvent = new UnityEvent<CardDrag, CardDropZone>();
     private UnityEvent<CardDrag> m_OnEndMovementEvent = new UnityEvent<CardDrag>();
 
-    public Card GetCard() => m_CardGO.GetCard();
+    public CardGameObject GetCardGO() => m_CardGO;
     public bool IsMouseOver() => m_bMouseOver;
     public bool IsDrag() => m_bDrag;
     public void SetDesiredPosition(Vector2 _position) => m_DesiredPosition = _position;

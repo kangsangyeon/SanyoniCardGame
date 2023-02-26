@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -90,23 +89,23 @@ public class CardDummy : MonoBehaviour, IPointerClickHandler
 
     private void OnDrop(CardDrag _cardDrag)
     {
-        var _card = _cardDrag.GetCard();
-        Debug.Log($"CardDummy::OnDrop Called. {_card.ToString()}");
+        var _cardGO = _cardDrag.GetCardGO();
+        Debug.Log($"CardDummy::OnDrop Called. {_cardGO.name}");
 
         // 카드가 속한 위치를 변경합니다.
-        _card.SetDummy(this);
-        _card.GetGameObject().GetDrag().SetDesiredPosition(transform.position);
+        _cardGO.GetCard().SetDummy(this);
+        _cardGO.GetDrag().SetDesiredPosition(transform.position);
 
-        _card.GetGameObject().GetDrag().GetOnEndMovementEvent().AddListener(OnEndCardMovement);
+        _cardGO.GetDrag().GetOnEndMovementEvent().AddListener(OnEndCardMovement);
     }
 
     private void OnEndCardMovement(CardDrag _cardDrag)
     {
-        var _card = _cardDrag.GetCard();
+        var _cardGO = _cardDrag.GetCardGO();
 
         // 카드를 숨깁니다.
-        _card.GetGameObject().gameObject.SetActive(false);
+        _cardGO.gameObject.SetActive(false);
 
-        _card.GetGameObject().GetDrag().GetOnEndMovementEvent().RemoveListener(OnEndCardMovement);
+        _cardGO.GetDrag().GetOnEndMovementEvent().RemoveListener(OnEndCardMovement);
     }
 }

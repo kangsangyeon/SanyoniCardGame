@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Card
 {
     private CardAttribute m_Attribute;
