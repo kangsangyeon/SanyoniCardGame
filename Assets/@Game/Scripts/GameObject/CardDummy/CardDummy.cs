@@ -11,16 +11,20 @@ public class CardDummy : MonoBehaviour, IPointerClickHandler
     [SerializeField] private bool m_Ordered;
     private List<Card> m_Cards = new List<Card>();
     private UnityEvent m_OnClickEvent = new UnityEvent();
+    private UnityEvent<List<Card>> m_OnAddCardListEvent = new UnityEvent<List<Card>>();
+    private UnityEvent<List<Card>> m_OnRemoveCardListEvent = new UnityEvent<List<Card>>();
 
     public List<Card> GetCardList() => m_Cards;
     public UnityEvent GetOnClickEvent() => m_OnClickEvent;
+    public UnityEvent<List<Card>> GetOnAddCardListEvent() => m_OnAddCardListEvent;
+    public UnityEvent<List<Card>> GetOnRemoveCardListEvent() => m_OnAddCardListEvent;
 
     public Card Draw()
     {
         Assert.IsTrue(m_Cards.Count >= 1);
 
         Card _card = m_Cards[m_Cards.Count - 1];
-        RemoveCard(_card);
+        RemoveCardList(new List<Card>() { _card });
         return _card;
     }
 
@@ -35,24 +39,24 @@ public class CardDummy : MonoBehaviour, IPointerClickHandler
         return _cardList;
     }
 
-    public void AddCard(Card _card)
-    {
-        Assert.IsTrue(m_Cards.Contains(_card) == false);
-        _card.SetDummy(this);
-        m_Cards.Add(_card);
-    }
+    public void AddCard(Card _card) => AddCardList(new List<Card>() { _card });
 
-    public void AddCardRange(List<Card> _cardList)
+    public void AddCardList(List<Card> _cardList)
     {
-        _cardList.ForEach(c => Assert.IsTrue(m_Cards.Contains(c) == false));
-        _cardList.ForEach(c => c.SetDummy(this));
+        bool _containsNothing = _cardList.TrueForAll(c => m_Cards.Contains(c) == false);
+        Assert.IsTrue(_containsNothing);
         m_Cards.AddRange(_cardList);
+        m_Cards.ForEach(c => c.SetDummy(this));
+        m_OnAddCardListEvent.Invoke(_cardList);
     }
 
-    public void RemoveCard(Card _card)
+    public void RemoveCard(Card _card) => RemoveCardList(new List<Card>() { _card });
+
+    public void RemoveCardList(List<Card> _cardList)
     {
-        Assert.IsTrue(m_Cards.Contains(_card));
-        m_Cards.Remove(_card);
+        bool _containsAll = _cardList.TrueForAll(c => m_Cards.Contains(c));
+        Assert.IsTrue(_containsAll);
+        _cardList.ForEach(c => m_Cards.Remove(c));
     }
 
     public override string ToString()
@@ -93,7 +97,7 @@ public class CardDummy : MonoBehaviour, IPointerClickHandler
         Debug.Log($"CardDummy::OnDrop Called. {_cardGO.name}");
 
         // 카드가 속한 위치를 변경합니다.
-        _cardGO.GetCard().SetDummy(this);
+        AddCard(_cardGO.GetCard());
         _cardGO.GetDrag().SetDesiredPosition(transform.position);
 
         _cardGO.GetDrag().GetOnEndMovementEvent().AddListener(OnEndCardMovement);

@@ -12,16 +12,17 @@ public class TestDrawFromCardDummy : MonoBehaviour
     {
         m_Dummy.GetOnClickEvent().AddListener(OnClickDummy);
 
-        m_Dummy.AddCardRange(CreateCardList());
+        var _cardList = CreateCardList();
+        m_Dummy.AddCardList(_cardList);
 
         var _cards = m_Dummy.Draw(5);
-        m_Hand.Add(_cards);
+        m_Hand.AddCardList(_cards);
     }
 
     private void OnClickDummy()
     {
         var _card = m_Dummy.Draw();
-        m_Hand.Add(_card);
+        m_Hand.AddCard(_card);
     }
 
     private List<Card> CreateCardList()

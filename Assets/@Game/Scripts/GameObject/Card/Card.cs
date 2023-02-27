@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class Card
 {
     private CardAttribute m_Attribute;
@@ -20,6 +22,7 @@ public class Card
     }
 
     public void SetGameObject(CardGameObject _go) => m_GameObject = _go;
+
     public void SetDummy(CardDummy _dummy) => m_Dummy = _dummy;
 
     public override string ToString()
