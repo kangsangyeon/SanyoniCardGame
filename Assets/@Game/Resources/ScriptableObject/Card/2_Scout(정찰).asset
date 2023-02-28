@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2ef5804bdd682e4a8c050f333dc898b, type: 3}
-  m_Name: "2_\uC815\uCC30"
+  m_Name: "2_Scout(\uC815\uCC30)"
   m_EditorClassIdentifier: 
   m_CardName: "\uC815\uCC30"
   m_Thumbnail: {fileID: 21300000, guid: eb6c071e871e8a84c8302a3343ae62c0, type: 3}
@@ -23,4 +23,5 @@ MonoBehaviour:
     \uC6D0\uD558\uB294 \uCE74\uB4DC\uB97C \uC120\uD0DD\uD574 \uBC84\uB9B4 \uC218
     \uC788\uB2E4."
   m_Prerequisite: {fileID: 0}
-  m_OperationSequence: []
+  m_OperationSequence:
+  - {fileID: 11400000, guid: 71584fbdff0f63a4993d842d9498cd47, type: 2}

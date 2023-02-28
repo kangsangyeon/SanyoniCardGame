@@ -14,6 +14,7 @@ public class UI_CardDummy_Card : MonoBehaviour, IPointerClickHandler
     
     public bool GetToggleIsOn() => m_ToggleSelect.isOn;
     public Card GetCard() => m_Card;
+    public void SetCanSelectable(bool _selectable) => m_ToggleSelect.gameObject.SetActive(_selectable);
     
     public void Refresh(Card _card)
     {

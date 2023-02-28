@@ -49,7 +49,7 @@ public class CardFieldLink : MonoBehaviour
         Card _card = _cardDrag.GetCardGO().GetCard();
         m_Card = _card;
 
-        Debug.Log($"CardFieldLink::OnDrop Called. {gameObject.name} <- {_card.ToString()}");
+        Debug.Log($"CardFieldLink::OnDrop Called. \"{gameObject.name}\" from \"{_card.GetDummy().name}\" to \"{gameObject.name}\"");
 
         // 이 FieldLink에 카드를 올려둘 수 없도록 막습니다.
         m_DropZone.SetCanDrop(false);

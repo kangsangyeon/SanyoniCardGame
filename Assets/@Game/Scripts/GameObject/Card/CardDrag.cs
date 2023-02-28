@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -79,21 +80,33 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnDrag(PointerEventData eventData)
     {
+        Vector2 _mousePosition = eventData.position;
         m_DesiredPosition = eventData.position + m_DragOffset;
 
-        if (m_OverlappedTriggerList.Count > 0)
+        // 카드와 겹치는 drop zone 중,
+        // 가장 가까운 거리에 있는 drop zone을 찾아
+        // desired drop zone으로 설정합니다.
+
+        float _nearestDistance = float.MaxValue;
+        CardDropZone _desiredZone = null;
+
+        for (int i = 0; i < m_OverlappedTriggerList.Count; ++i)
         {
-            var _trigger = m_OverlappedTriggerList[m_OverlappedTriggerList.Count - 1];
+            var _trigger = m_OverlappedTriggerList[i];
             var _cardZone = _trigger.GetComponent<CardDropZone>();
             if (_cardZone && _cardZone.GetCanDrop())
             {
-                m_DesiredDropZone = _cardZone;
+                Vector2 _cardZonePosition = _cardZone.transform.position;
+                float _distance = Vector2.Distance(_mousePosition, _cardZonePosition);
+                if (_distance < _nearestDistance)
+                {
+                    _nearestDistance = _distance;
+                    _desiredZone = _cardZone;
+                }
             }
         }
-        else
-        {
-            m_DesiredDropZone = null;
-        }
+
+        m_DesiredDropZone = _desiredZone;
 
         // 겹친 오브젝트들에 대해, 얼만큼 겹쳐있는지에 대한 퍼센티지를 계산합니다.
         // 일정 영역 이하로 겹친 오브젝트들을 걸러냅니다.

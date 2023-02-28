@@ -18,7 +18,7 @@ public class TestCardDummy : MonoBehaviour
         // 카드를 5장을 뽑아 손에 듭니다.
         m_Hand.AddCardList(m_Dummy.Draw(5));
         
-        m_Dummy.GetComponent<CardDummyCommonInteraction>().GetOnClickEvent().AddListener(() => { m_DummyUI.Show("테스트 카드 더미", m_Dummy); });
+        m_Dummy.GetComponent<CardDummyCommonInteraction>().GetOnClickEvent().AddListener(() => { m_DummyUI.Show("테스트 카드 더미", m_Dummy, false); });
     }
 
     private List<Card> CreateCardList()

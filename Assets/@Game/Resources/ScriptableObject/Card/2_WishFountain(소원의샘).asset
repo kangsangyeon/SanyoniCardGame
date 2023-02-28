@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2ef5804bdd682e4a8c050f333dc898b, type: 3}
-  m_Name: "2_\uC18C\uC6D0\uC758 \uC0D8"
+  m_Name: "2_WishFountain(\uC18C\uC6D0\uC758\uC0D8)"
   m_EditorClassIdentifier: 
   m_CardName: "\uC18C\uC6D0\uC758 \uC0D8"
   m_Thumbnail: {fileID: 21300000, guid: 0591114ba4d6a974796898ecdec4d622, type: 3}
@@ -21,4 +21,5 @@ MonoBehaviour:
     \uBC84\uB9B0\uB2E4. \uADF8 \uD6C4 \uBC29\uAE08 \uBC84\uB9B0 \uCE74\uB4DC \uC7A5\uC218\uB9CC\uD07C
     \uCE74\uB4DC\uB97C \uCE74\uB4DC \uB354\uBBF8\uC5D0\uC11C \uBF51\uB294\uB2E4."
   m_Prerequisite: {fileID: 0}
-  m_OperationSequence: []
+  m_OperationSequence:
+  - {fileID: 11400000, guid: b886737c75848494883b475dbf5926d0, type: 2}

@@ -22,7 +22,7 @@ public class CardLayout : MonoBehaviour
     {
         Assert.IsTrue(m_CardList.Contains(_cardGameObject) == true);
         m_CardList.Remove(_cardGameObject);
-        _cardGameObject.GetDrag().GetOnDropZoneEvent().AddListener(OnCardDropZone);
+        _cardGameObject.GetDrag().GetOnDropZoneEvent().RemoveListener(OnCardDropZone);
         RefreshCardRenderOrder();
     }
 
