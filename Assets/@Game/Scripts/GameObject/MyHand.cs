@@ -6,7 +6,6 @@ using UnityEngine;
 public class MyHand : CardDummy
 {
     [SerializeField] private CardLayout m_Layout;
-    [SerializeField] private List<Card> m_CardList = new List<Card>();
 
     private void Awake()
     {
