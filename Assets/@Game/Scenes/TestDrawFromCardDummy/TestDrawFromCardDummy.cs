@@ -10,13 +10,13 @@ public class TestDrawFromCardDummy : MonoBehaviour
 
     private void Start()
     {
-        m_Dummy.GetOnClickEvent().AddListener(OnClickDummy);
-
         var _cardList = CreateCardList();
         m_Dummy.AddCardList(_cardList);
 
         var _cards = m_Dummy.Draw(5);
         m_Hand.AddCardList(_cards);
+        
+        m_Dummy.GetComponent<CardDummyCommonInteraction>().GetOnClickEvent().AddListener(OnClickDummy);
     }
 
     private void OnClickDummy()

@@ -15,6 +15,7 @@ MonoBehaviour:
   m_CardName: "\uD30C\uBC1C\uB9C8"
   m_Thumbnail: {fileID: 21300000, guid: 2d2f18c04bae62f45baa35ac74ce3cb5, type: 3}
   m_Cost: 2
+  m_Link: 2
   m_Type: 2
   m_Description: "\uCE74\uB4DC\uB97C 1\uC7A5 \uBF51\uB294\uB2E4."
   m_Prerequisite: {fileID: 0}

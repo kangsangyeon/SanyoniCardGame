@@ -8,6 +8,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     [SerializeField] private CardGameObject m_CardGO;
     [SerializeField] private float m_DragLerpSpeed = 0.05f;
     [SerializeField] private float m_RotateLerpSpeed = 0.1f;
+    [SerializeField] private float m_ScaleLerpSpeed = 0.1f;
 
     private bool m_bMouseOver;
     private bool m_bDrag;
@@ -15,6 +16,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Vector2 m_DragOffset;
     private Vector2 m_DesiredPosition;
     private Quaternion m_DesiredRotation;
+    private Vector2 m_DesiredScale;
     private CardDropZone m_DesiredDropZone;
     private List<Collider2D> m_OverlappedTriggerList = new List<Collider2D>();
     private UnityEvent<CardDrag, CardDropZone> m_OnDropZoneEvent = new UnityEvent<CardDrag, CardDropZone>();
@@ -29,14 +31,11 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public UnityEvent<CardDrag, CardDropZone> GetOnDropZoneEvent() => m_OnDropZoneEvent;
     public UnityEvent<CardDrag> GetOnEndMovementEvent() => m_OnEndMovementEvent;
 
-    private void Start()
-    {
-        m_DesiredPosition = transform.position;
-    }
-
     private void OnEnable()
     {
         m_DesiredPosition = transform.position;
+        m_DesiredRotation = transform.rotation;
+        m_DesiredScale = transform.localScale;
     }
 
     private void Update()
@@ -53,6 +52,13 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (_angleDifference > 0.001f)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, m_DesiredRotation, m_RotateLerpSpeed);
+            _bMoving |= true;
+        }
+
+        float _scaleDifference = Vector2.Distance(transform.localScale, m_DesiredScale);
+        if (_scaleDifference > 0.001f)
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, m_DesiredScale, m_ScaleLerpSpeed);
             _bMoving |= true;
         }
 
@@ -79,7 +85,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             var _trigger = m_OverlappedTriggerList[m_OverlappedTriggerList.Count - 1];
             var _cardZone = _trigger.GetComponent<CardDropZone>();
-            if (_cardZone)
+            if (_cardZone && _cardZone.GetCanDrop())
             {
                 m_DesiredDropZone = _cardZone;
             }
@@ -100,6 +106,8 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         if (m_DesiredDropZone)
         {
             m_DesiredPosition = m_DesiredDropZone.GetDropPosition().position;
+            m_DesiredRotation = m_DesiredDropZone.transform.rotation;
+            m_DesiredScale = m_DesiredDropZone.transform.localScale;
 
             if (m_OnDropZoneEvent != null)
                 m_OnDropZoneEvent.Invoke(this, m_DesiredDropZone);
