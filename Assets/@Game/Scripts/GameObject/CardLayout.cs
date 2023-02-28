@@ -8,7 +8,7 @@ public class CardLayout : MonoBehaviour
     [SerializeField] private float m_BezierCenterDown = 4000;
     [SerializeField] private float m_CardMouseOverUp = 200;
     [SerializeField] private Bezier m_Bezier;
-    [SerializeField] private List<CardGameObject> m_CardList;
+    private List<CardGameObject> m_CardList = new List<CardGameObject>();
 
     public void AddCard(CardGameObject _cardGameObject)
     {
@@ -34,13 +34,6 @@ public class CardLayout : MonoBehaviour
             _renderOrder.SetRenderOrder(m_CardList.Count - i);
             _renderOrder.SetLayerAsHand();
         }
-    }
-
-    private void Start()
-    {
-        List<CardGameObject> _cardList = new List<CardGameObject>(m_CardList);
-        m_CardList.Clear();
-        _cardList.ForEach(AddCard);
     }
 
     private void Update()
