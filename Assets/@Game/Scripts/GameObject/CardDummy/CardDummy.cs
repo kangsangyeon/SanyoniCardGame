@@ -14,7 +14,7 @@ public class CardDummy : MonoBehaviour
 
     public List<Card> GetCardList() => m_Cards;
     public UnityEvent<List<Card>> GetOnAddCardListEvent() => m_OnAddCardListEvent;
-    public UnityEvent<List<Card>> GetOnRemoveCardListEvent() => m_OnAddCardListEvent;
+    public UnityEvent<List<Card>> GetOnRemoveCardListEvent() => m_OnRemoveCardListEvent;
 
     public Card Draw()
     {
@@ -70,6 +70,9 @@ public class CardDummy : MonoBehaviour
             c.SetDummy(null);
             m_Cards.Remove(c);
         });
+
+        // 카드 삭제 이벤트를 호출합니다.
+        m_OnRemoveCardListEvent.Invoke(_cardList);
     }
 
     public override string ToString()

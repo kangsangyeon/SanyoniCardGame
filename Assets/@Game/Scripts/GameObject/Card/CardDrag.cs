@@ -28,6 +28,14 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public bool IsDrag() => m_bDrag;
     public void SetDesiredPosition(Vector2 _position) => m_DesiredPosition = _position;
     public void SetDesiredRotation(Quaternion _rotation) => m_DesiredRotation = _rotation;
+    public void SetDesiredScale(Vector2 _scale) => m_DesiredScale = _scale;
+
+    public void SetDesiredTransform(Vector2 _position, Quaternion _rotation, Vector2 _scale)
+    {
+        m_DesiredPosition = _position;
+        m_DesiredRotation = _rotation;
+        m_DesiredScale = _scale;
+    }
 
     public UnityEvent<CardDrag, CardDropZone> GetOnDropZoneEvent() => m_OnDropZoneEvent;
     public UnityEvent<CardDrag> GetOnEndMovementEvent() => m_OnEndMovementEvent;
@@ -37,27 +45,27 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         m_DesiredPosition = transform.position;
         m_DesiredRotation = transform.rotation;
         m_DesiredScale = transform.localScale;
-    }
+    }   
 
     private void Update()
     {
         bool _bMoving = false;
         float _distance = Vector2.Distance(transform.position, m_DesiredPosition);
-        if (_distance > 0.001f)
+        if (_distance > 0.1f)
         {
             transform.position = Vector2.Lerp(transform.position, m_DesiredPosition, m_DragLerpSpeed);
             _bMoving |= true;
         }
 
         float _angleDifference = Quaternion.Angle(transform.rotation, m_DesiredRotation);
-        if (_angleDifference > 0.001f)
+        if (_angleDifference > 0.1f)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, m_DesiredRotation, m_RotateLerpSpeed);
             _bMoving |= true;
         }
 
         float _scaleDifference = Vector2.Distance(transform.localScale, m_DesiredScale);
-        if (_scaleDifference > 0.001f)
+        if (_scaleDifference > 0.01f)
         {
             transform.localScale = Vector2.Lerp(transform.localScale, m_DesiredScale, m_ScaleLerpSpeed);
             _bMoving |= true;

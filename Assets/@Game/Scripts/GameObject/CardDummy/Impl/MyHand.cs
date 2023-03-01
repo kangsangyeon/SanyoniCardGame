@@ -7,14 +7,26 @@ public class MyHand : CardDummy
 {
     [SerializeField] private CardLayout m_Layout;
 
-    private void Awake()
+    private void OnEnable()
     {
         GetOnAddCardListEvent().AddListener(OnAddCardList);
+        GetOnRemoveCardListEvent().AddListener(OnRemoveCardList);
+    }
+
+    private void OnDisable()
+    {
+        GetOnAddCardListEvent().RemoveListener(OnAddCardList);
+        GetOnRemoveCardListEvent().RemoveListener(OnRemoveCardList);
     }
 
     private void OnAddCardList(List<Card> _cardList)
     {
         StartCoroutine(DrawAnimationCoroutine(_cardList));
+    }
+    
+    private void OnRemoveCardList(List<Card> _cardList)
+    {
+        _cardList.ForEach(c=>m_Layout.RemoveCard(c.GetGameObject()));
     }
 
     private IEnumerator DrawAnimationCoroutine(List<Card> _cardList)
