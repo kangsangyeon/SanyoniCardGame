@@ -367,6 +367,14 @@ MonoBehaviour:
   m_Attributes:
   - {fileID: 11400000, guid: 63c4a0cfec943b3408057e51b989d987, type: 2}
   - {fileID: 11400000, guid: 2295ce061ba8bf04691377e284feab78, type: 2}
+  - {fileID: 11400000, guid: 2295ce061ba8bf04691377e284feab78, type: 2}
+  - {fileID: 11400000, guid: 2295ce061ba8bf04691377e284feab78, type: 2}
+  - {fileID: 11400000, guid: 2295ce061ba8bf04691377e284feab78, type: 2}
+  - {fileID: 11400000, guid: 3407b66f38f906443b8ed3bc95f5fbe5, type: 2}
+  - {fileID: 11400000, guid: 3407b66f38f906443b8ed3bc95f5fbe5, type: 2}
+  - {fileID: 11400000, guid: 3407b66f38f906443b8ed3bc95f5fbe5, type: 2}
+  - {fileID: 11400000, guid: 63c4a0cfec943b3408057e51b989d987, type: 2}
+  - {fileID: 11400000, guid: 63c4a0cfec943b3408057e51b989d987, type: 2}
   m_Dummy: {fileID: 668233322}
   m_Hand: {fileID: 1517715326}
 --- !u!4 &168236964
@@ -2785,6 +2793,9 @@ MonoBehaviour:
   m_PlayerHandDummyList:
   - {fileID: 1517715326}
   - {fileID: 0}
+  m_PlayerDummyList:
+  - {fileID: 668233322}
+  - {fileID: 0}
   m_SupplyDummy: {fileID: 0}
   m_OutlandDummy: {fileID: 7390326031039297845}
 --- !u!1 &1641584944
@@ -4220,7 +4231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9104398936759932325, guid: fbaf7ec3b88eb8a4b8e887cbb417098c, type: 3}
       propertyPath: m_Name
-      value: CardDummy
+      value: MyCardDummy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbaf7ec3b88eb8a4b8e887cbb417098c, type: 3}
