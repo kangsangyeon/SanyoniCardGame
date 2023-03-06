@@ -126,10 +126,6 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         m_bDrag = false;
         if (m_DesiredDropZone)
         {
-            m_DesiredPosition = m_DesiredDropZone.GetDropPosition().position;
-            m_DesiredRotation = m_DesiredDropZone.transform.rotation;
-            m_DesiredScale = m_DesiredDropZone.transform.localScale;
-
             if (m_OnDropZoneEvent != null)
                 m_OnDropZoneEvent.Invoke(this, m_DesiredDropZone);
 

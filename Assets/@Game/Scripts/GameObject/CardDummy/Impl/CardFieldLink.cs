@@ -41,6 +41,11 @@ public class CardFieldLink : MonoBehaviour
             return;
         }
 
+        _cardDrag.SetDesiredTransform(
+            m_DropZone.GetDropPosition().position,
+            m_DropZone.transform.rotation,
+            m_DropZone.transform.localScale);
+
         StartCoroutine(OnDropCoroutine(_cardDrag));
     }
 
