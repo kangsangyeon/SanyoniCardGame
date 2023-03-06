@@ -12,7 +12,6 @@ public class CardOperation_2_Offering : CardOperationBase
         CardDummy _dummy = GameManager.Instance.GetPlayerHandDummy(0);
         var _uiCardDummy = GameManager.Instance.GetUICardDummy();
 
-        _uiCardDummy.SetSelectable(true, 1);
         _uiCardDummy.Show("추방시킬 카드 한 장을 선택하세요.", _dummy, true, 1);
 
         // 카드 한 장을 선택할 때까지 대기합니다.

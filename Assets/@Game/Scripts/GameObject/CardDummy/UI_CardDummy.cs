@@ -16,13 +16,6 @@ public class UI_CardDummy : MonoBehaviour
 
     public bool GetIsSelectComplete() => m_bIsSelectComplete;
 
-    public void SetSelectable(bool _selectable, int _maxCount = 0)
-    {
-        m_bSelectable = _selectable;
-        m_MaxSelectCount = _maxCount;
-        m_bIsSelectComplete = false;
-    }
-
     public List<Card> GetSelectedCards()
     {
         List<Card> _selectedCardList = new List<Card>();
@@ -39,8 +32,13 @@ public class UI_CardDummy : MonoBehaviour
 
     public void Show(string _title, CardDummy _dummy, bool _selectable, int _maxSelectCount = 0)
     {
+        m_bIsSelectComplete = false;
+        
         m_UIParent.SetActive(true);
         m_Text_Title.text = _title;
+        
+        m_bSelectable = _selectable;
+        m_MaxSelectCount = _maxSelectCount;
 
         DestroyAllChild();
         _dummy.GetCardList().ForEach(c =>
