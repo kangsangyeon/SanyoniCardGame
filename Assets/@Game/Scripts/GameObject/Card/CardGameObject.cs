@@ -1,21 +1,25 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CardGameObject : MonoBehaviour
 {
     [SerializeField] private CardDrag m_Drag;
     [SerializeField] private CardRenderOrder m_RenderOrder;
     [SerializeField] private UI_Card m_UI;
+    [SerializeField] private Collider2D m_Collider;
 
     private Card m_Card;
     private List<CardOperationBase> m_EffectSequence;
     private int m_Cost;
+    private bool m_bIsInteractable;
+    private UnityEvent<bool> m_OnChangeInteractableEvent = new UnityEvent<bool>();
 
     public Card GetCard() => m_Card;
     public CardDrag GetDrag() => m_Drag;
     public CardRenderOrder GetRenderOrder() => m_RenderOrder;
+    public bool GetIsInteractable() => m_bIsInteractable;
+    public UnityEvent<bool> GetOnChangeInteractableEvent() => m_OnChangeInteractableEvent;
 
     public void SetCard(Card _card)
     {
@@ -24,6 +28,12 @@ public class CardGameObject : MonoBehaviour
 
         m_Card = _card;
         m_UI.Refresh(_card.GetAttribute());
+    }
+
+    public void SetIsInteractable(bool _interactable)
+    {
+        m_bIsInteractable = _interactable;
+        m_OnChangeInteractableEvent.Invoke(_interactable);
     }
 
     public override string ToString()
@@ -40,5 +50,7 @@ public class CardGameObject : MonoBehaviour
             m_Card = null;
             SetCard(_card);
         }
+
+        m_bIsInteractable = m_Collider.enabled;
     }
 }

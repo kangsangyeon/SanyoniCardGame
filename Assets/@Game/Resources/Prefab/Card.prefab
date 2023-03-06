@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Drag: {fileID: 4783609707149257635}
   m_RenderOrder: {fileID: 4783609707149257633}
   m_UI: {fileID: 3760239671416496670}
+  m_Collider: {fileID: 4783609707149257634}
 --- !u!114 &4783609707149257635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,8 +249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CardGO: {fileID: 822150063946796063}
+  m_Collider: {fileID: 4783609707149257634}
   m_DragLerpSpeed: 0.05
   m_RotateLerpSpeed: 0.1
+  m_ScaleLerpSpeed: 0.1
 --- !u!114 &4783609707149257633
 MonoBehaviour:
   m_ObjectHideFlags: 0

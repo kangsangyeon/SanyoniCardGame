@@ -41,6 +41,8 @@ public class CardFieldLink : MonoBehaviour
             return;
         }
 
+        _cardDrag.GetCardGO().SetIsInteractable(false);
+        
         _cardDrag.SetDesiredTransform(
             m_DropZone.GetDropPosition().position,
             m_DropZone.transform.rotation,

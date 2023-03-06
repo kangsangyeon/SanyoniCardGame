@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine.EventSystems;
 public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private CardGameObject m_CardGO;
+    [SerializeField] private Collider2D m_Collider;
     [SerializeField] private float m_DragLerpSpeed = 0.05f;
     [SerializeField] private float m_RotateLerpSpeed = 0.1f;
     [SerializeField] private float m_ScaleLerpSpeed = 0.1f;
@@ -45,7 +47,14 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         m_DesiredPosition = transform.position;
         m_DesiredRotation = transform.rotation;
         m_DesiredScale = transform.localScale;
-    }   
+
+        m_CardGO.GetOnChangeInteractableEvent().AddListener(OnChangeInteractable);
+    }
+
+    private void OnDisable()
+    {
+        m_CardGO.GetOnChangeInteractableEvent().RemoveListener(OnChangeInteractable);
+    }
 
     private void Update()
     {
@@ -82,12 +91,18 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (GetCardGO().GetIsInteractable() == false)
+            return;
+
         m_bDrag = true;
         m_DragOffset = (Vector2)transform.position - eventData.position;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (GetCardGO().GetIsInteractable() == false)
+            return;
+
         Vector2 _mousePosition = eventData.position;
         m_DesiredPosition = eventData.position + m_DragOffset;
 
@@ -123,6 +138,9 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (GetCardGO().GetIsInteractable() == false)
+            return;
+
         m_bDrag = false;
         if (m_DesiredDropZone)
         {
@@ -139,4 +157,17 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     private void OnMouseEnter() => m_bMouseOver = true;
     private void OnMouseExit() => m_bMouseOver = false;
+
+    private void OnChangeInteractable(bool _interactable)
+    {
+        m_Collider.enabled = _interactable;
+
+        if (_interactable == false)
+        {
+            m_bDrag = false;
+            m_bMouseOver = false;
+            m_DesiredDropZone = null;
+            m_OverlappedTriggerList.Clear();
+        }
+    }
 }
