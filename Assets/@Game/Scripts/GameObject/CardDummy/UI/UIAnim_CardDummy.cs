@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class CardDummyCommonInteraction : MonoBehaviour, IPointerClickHandler
+public class UIAnim_CardDummy : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private CardDropZone m_DropZone;
     [SerializeField] private CardDummy m_Dummy;

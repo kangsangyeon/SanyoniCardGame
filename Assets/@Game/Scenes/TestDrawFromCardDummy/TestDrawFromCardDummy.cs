@@ -6,7 +6,7 @@ public class TestDrawFromCardDummy : MonoBehaviour
     [SerializeField] private CardGameObjectPool m_Pool;
     [SerializeField] private List<CardAttribute> m_Attributes = new List<CardAttribute>();
     [SerializeField] private CardDummy m_Dummy;
-    [SerializeField] private MyHand m_Hand;
+    [SerializeField] private CardDummy m_Hand;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class TestDrawFromCardDummy : MonoBehaviour
         var _cards = m_Dummy.Draw(5);
         m_Hand.AddCardList(_cards);
         
-        m_Dummy.GetComponent<CardDummyCommonInteraction>().GetOnClickEvent().AddListener(OnClickDummy);
+        m_Dummy.GetComponent<UIAnim_CardDummy>().GetOnClickEvent().AddListener(OnClickDummy);
     }
 
     private void OnClickDummy()

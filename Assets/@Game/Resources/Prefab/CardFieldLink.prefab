@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6768151366646443853}
   - component: {fileID: 6768151366646443840}
   - component: {fileID: 6768151366646443841}
+  - component: {fileID: 1245251706920588466}
   m_Layer: 0
   m_Name: CardFieldLink
   m_TagString: Untagged
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_OnDropEvent:
     m_PersistentCalls:
       m_Calls: []
+  m_bCanDrop: 1
 --- !u!114 &6768151366646443841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +113,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2046089448300364597d10c8e147cbb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Prefab_CardFieldLink: {fileID: 6768151366646443889}
-  m_Field: {fileID: 0}
+  m_DropZone: {fileID: 6768151366646443840}
+--- !u!114 &1245251706920588466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6768151366646443889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94d9d86a3614ec48a559bc326cbfa83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Link: {fileID: 6768151366646443841}
   m_DropZone: {fileID: 6768151366646443840}
 --- !u!1 &6768151366710593671
 GameObject:

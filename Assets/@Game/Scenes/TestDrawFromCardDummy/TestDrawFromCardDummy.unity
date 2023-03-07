@@ -175,7 +175,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bbe20e4756830424b81feb03dd5cc888, type: 2}
   - {fileID: 11400000, guid: 3407b66f38f906443b8ed3bc95f5fbe5, type: 2}
   m_Dummy: {fileID: 668233322}
-  m_Hand: {fileID: 1517715326}
+  m_Hand: {fileID: 1517715327}
 --- !u!4 &168236964
 Transform:
   m_ObjectHideFlags: 0
@@ -733,7 +733,6 @@ MonoBehaviour:
   m_BezierCenterDown: 4000
   m_CardMouseOverUp: 200
   m_Bezier: {fileID: 305757293}
-  m_CardList: []
 --- !u!4 &1321695667
 Transform:
   m_ObjectHideFlags: 0
@@ -758,6 +757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1517715325}
+  - component: {fileID: 1517715327}
   - component: {fileID: 1517715326}
   m_Layer: 0
   m_Name: MyHand
@@ -793,7 +793,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa10bea2c9f434e4fa214d565066d9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Dummy: {fileID: 1517715327}
   m_Layout: {fileID: 1321695666}
+--- !u!114 &1517715327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517715324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b59de7836814a14f94cd943ec011706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Ordered: 0
 --- !u!1001 &2117486725
 PrefabInstance:
   m_ObjectHideFlags: 0

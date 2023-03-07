@@ -1,22 +1,22 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyHand : CardDummy
+public class UIAnim_Hand : MonoBehaviour
 {
+    [SerializeField] private CardDummy m_Dummy;
     [SerializeField] private CardLayout m_Layout;
 
     private void OnEnable()
     {
-        GetOnAddCardListEvent().AddListener(OnAddCardList);
-        GetOnRemoveCardListEvent().AddListener(OnRemoveCardList);
+        m_Dummy.GetOnAddCardListEvent().AddListener(OnAddCardList);
+        m_Dummy.GetOnRemoveCardListEvent().AddListener(OnRemoveCardList);
     }
 
     private void OnDisable()
     {
-        GetOnAddCardListEvent().RemoveListener(OnAddCardList);
-        GetOnRemoveCardListEvent().RemoveListener(OnRemoveCardList);
+        m_Dummy.GetOnAddCardListEvent().RemoveListener(OnAddCardList);
+        m_Dummy.GetOnRemoveCardListEvent().RemoveListener(OnRemoveCardList);
     }
 
     private void OnAddCardList(List<Card> _cardList)

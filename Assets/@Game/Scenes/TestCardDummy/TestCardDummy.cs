@@ -8,7 +8,7 @@ public class TestCardDummy : MonoBehaviour
     [SerializeField] private List<CardAttribute> m_CardAttributeList;
     [SerializeField] private CardDummy m_Dummy;
     [SerializeField] private UI_CardDummy m_DummyUI;
-    [SerializeField] private MyHand m_Hand;
+    [SerializeField] private CardDummy m_Hand;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class TestCardDummy : MonoBehaviour
         // 카드를 5장을 뽑아 손에 듭니다.
         m_Hand.AddCardList(m_Dummy.Draw(5));
         
-        m_Dummy.GetComponent<CardDummyCommonInteraction>().GetOnClickEvent().AddListener(() => { m_DummyUI.Show("테스트 카드 더미", m_Dummy, false); });
+        m_Dummy.GetComponent<UIAnim_CardDummy>().GetOnClickEvent().AddListener(() => { m_DummyUI.Show("테스트 카드 더미", m_Dummy, false); });
     }
 
     private List<Card> CreateCardList()

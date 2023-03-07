@@ -765,7 +765,6 @@ MonoBehaviour:
   m_BezierCenterDown: 4000
   m_CardMouseOverUp: 200
   m_Bezier: {fileID: 1122771021}
-  m_CardList: []
 --- !u!4 &264952023
 Transform:
   m_ObjectHideFlags: 0
@@ -1530,7 +1529,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3407b66f38f906443b8ed3bc95f5fbe5, type: 2}
   m_Dummy: {fileID: 448143262}
   m_DummyUI: {fileID: 1734334658}
-  m_Hand: {fileID: 1811054906}
+  m_Hand: {fileID: 1811054908}
 --- !u!1 &746912597
 GameObject:
   m_ObjectHideFlags: 0
@@ -3588,6 +3587,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811054907}
+  - component: {fileID: 1811054908}
   - component: {fileID: 1811054906}
   m_Layer: 0
   m_Name: MyHand
@@ -3608,8 +3608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa10bea2c9f434e4fa214d565066d9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DropZone: {fileID: 0}
-  m_Ordered: 0
+  m_Dummy: {fileID: 1811054908}
   m_Layout: {fileID: 264952022}
 --- !u!4 &1811054907
 Transform:
@@ -3626,6 +3625,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1811054908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811054905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b59de7836814a14f94cd943ec011706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Ordered: 0
 --- !u!1 &1888385094
 GameObject:
   m_ObjectHideFlags: 0

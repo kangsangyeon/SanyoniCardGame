@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_CardDummy_Outland : MonoBehaviour
+public class UIAnim_Outland : MonoBehaviour
 {
     [SerializeField] private CardDummy m_Dummy;
 
