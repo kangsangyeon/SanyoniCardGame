@@ -17,9 +17,9 @@ public class CardOperation_2_WishFountain : CardOperationBase
         // 카드들을 선택할 때까지 대기합니다.
         while (_uiCardDummy.GetIsSelectComplete() == false) yield return null;
 
-        // 선택한 카드들을 국외로 이동합니다.
+        // 선택한 카드들을 버린 카드 더미로 이동합니다.
         List<Card> _selectedCards = _uiCardDummy.GetSelectedCards();
-        GameManager.Instance.GetOutlandDummy().AddCardList(_selectedCards);
+        GameManager.Instance.GetPlayerDiscardDummy(0).AddCardList(_selectedCards);
 
         // 버린 카드들의 개수만큼 다시 드로우합니다.
         var _drawCards = _dummy.Draw(_selectedCards.Count);
