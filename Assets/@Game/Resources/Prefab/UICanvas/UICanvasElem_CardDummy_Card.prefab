@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5751350643238569822}
   - component: {fileID: 7152422397743183086}
   m_Layer: 0
-  m_Name: UI_CardDummy_Card
+  m_Name: UICanvasElem_CardDummy_Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
