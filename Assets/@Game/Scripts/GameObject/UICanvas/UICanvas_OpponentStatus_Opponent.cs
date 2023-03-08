@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_Opponent : MonoBehaviour
+public class UICanvas_OpponentStatus_Opponent : MonoBehaviour
 {
     [SerializeField] private Image m_Img_Princess;
     [SerializeField] private TextMeshProUGUI m_Txt_PointCount;

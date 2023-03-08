@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UI_Opponent_OnClick : MonoBehaviour, IPointerClickHandler
+public class UICanvas_OpponentStatus_Opponent_OnClick : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private CardDummy m_OpponentDrawPile;
     [SerializeField] private CardDummy m_OpponentHand;
