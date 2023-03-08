@@ -7,6 +7,8 @@ public class UI_CardDummy : MonoBehaviour
 {
     [SerializeField] private GameObject m_Prefab_CardUI;
     [SerializeField] private TextMeshProUGUI m_Text_Title;
+    [SerializeField] private GameObject m_Panel_Buttons_Selectable;
+    [SerializeField] private GameObject m_Panel_Buttons_NonSelectable;
     [SerializeField] private Transform m_LayoutParent;
     [SerializeField] private GameObject m_UIParent;
 
@@ -33,12 +35,14 @@ public class UI_CardDummy : MonoBehaviour
     public void Show(string _title, CardDummy _dummy, bool _selectable, int _maxSelectCount = 0)
     {
         m_bIsSelectComplete = false;
+        m_bSelectable = _selectable;
+        m_MaxSelectCount = _maxSelectCount;
         
         m_UIParent.SetActive(true);
         m_Text_Title.text = _title;
-        
-        m_bSelectable = _selectable;
-        m_MaxSelectCount = _maxSelectCount;
+
+        m_Panel_Buttons_Selectable.SetActive(_selectable);
+        m_Panel_Buttons_NonSelectable.SetActive(!_selectable);
 
         DestroyAllChild();
         _dummy.GetCardList().ForEach(c =>
