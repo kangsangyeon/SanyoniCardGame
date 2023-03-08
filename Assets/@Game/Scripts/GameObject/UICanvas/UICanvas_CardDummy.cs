@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UI_CardDummy : MonoBehaviour
+public class UICanvas_CardDummy : MonoBehaviour
 {
     [SerializeField] private GameObject m_Prefab_CardUI;
     [SerializeField] private TextMeshProUGUI m_Text_Title;
@@ -24,7 +24,7 @@ public class UI_CardDummy : MonoBehaviour
 
         for (int i = 0; i < m_LayoutParent.transform.childCount; ++i)
         {
-            var _cardUI = m_LayoutParent.transform.GetChild(i).GetComponent<UI_CardDummy_Card>();
+            var _cardUI = m_LayoutParent.transform.GetChild(i).GetComponent<UICanvas_CardDummy_Card>();
             if (_cardUI.GetToggleIsOn())
                 _selectedCardList.Add(_cardUI.GetCard());
         }
@@ -49,7 +49,7 @@ public class UI_CardDummy : MonoBehaviour
         {
             GameObject _cardUIGO = GameObject.Instantiate(m_Prefab_CardUI, m_LayoutParent);
             _cardUIGO.name = $"{_cardUIGO.name}_{c.ToString()}";
-            UI_CardDummy_Card _cardUI = _cardUIGO.GetComponent<UI_CardDummy_Card>();
+            UICanvas_CardDummy_Card _cardUI = _cardUIGO.GetComponent<UICanvas_CardDummy_Card>();
             _cardUI.Refresh(c);
             _cardUI.SetCanSelectable(m_bSelectable);
         });

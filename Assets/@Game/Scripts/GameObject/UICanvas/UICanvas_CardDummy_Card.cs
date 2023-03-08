@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_CardDummy_Card : MonoBehaviour, IPointerClickHandler
+public class UICanvas_CardDummy_Card : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private TextMeshProUGUI m_Txt_CardName;
     [SerializeField] private Image m_Img_Thumbnail;

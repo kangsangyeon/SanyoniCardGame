@@ -7,7 +7,7 @@ public class TestCardDummy : MonoBehaviour
     [SerializeField] private CardGameObjectPool m_Pool;
     [SerializeField] private List<CardAttribute> m_CardAttributeList;
     [SerializeField] private CardDummy m_Dummy;
-    [SerializeField] private UI_CardDummy m_DummyUI;
+    [SerializeField] private UICanvas_CardDummy m_DummyUI;
     [SerializeField] private CardDummy m_Hand;
 
     private void Start()
