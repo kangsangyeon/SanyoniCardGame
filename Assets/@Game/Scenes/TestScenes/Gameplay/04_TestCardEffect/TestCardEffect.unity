@@ -1098,15 +1098,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UI_CardDummy: {fileID: 983522794}
-  m_PlayerHandDummyList:
-  - {fileID: 1822825575}
-  - {fileID: 0}
-  m_PlayerDummyList:
-  - {fileID: 372096374}
-  - {fileID: 0}
-  m_PlayerDiscardDummyList:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_PlayerContextList:
+  - m_Hand: {fileID: 1822825575}
+    m_DrawPile: {fileID: 372096374}
+    m_DiscardDummy: {fileID: 0}
+    m_Gold: 0
+  - m_Hand: {fileID: 0}
+    m_DrawPile: {fileID: 0}
+    m_DiscardDummy: {fileID: 0}
+    m_Gold: 0
   m_SupplyDummy: {fileID: 0}
   m_OutlandDummy: {fileID: 1169506125}
 --- !u!1001 &1822825574

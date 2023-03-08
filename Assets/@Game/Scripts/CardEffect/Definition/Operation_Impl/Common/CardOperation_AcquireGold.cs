@@ -8,10 +8,11 @@ public class CardOperation_AcquireGold : CardOperationBase
     {
         int _gold = int.Parse(m_Arguments[0]);
 
-        int _goldOrigin = GameManager.Instance.GetPlayerGold(0);
+        var _playerContext = GameManager.Instance.GetPlayerContext(0);
+        int _goldOrigin = _playerContext.Gold;
         int _newGold = _goldOrigin + _gold;
-        GameManager.Instance.SetPlayerGold(0, _newGold);
-        
+        _playerContext.Gold = _newGold;
+
         Debug.Log($"CardOperation_AcquireGold::Perform(): gold changed. {_goldOrigin} -> {_newGold}");
 
         yield return new WaitForSeconds(1);

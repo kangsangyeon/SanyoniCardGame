@@ -9,10 +9,10 @@ public class CardOperation_2_Offering : CardOperationBase
     {
         // 손패의 카드 한 장을 선택해 국외로 이동시킵니다.
 
-        CardDummy _dummy = GameManager.Instance.GetPlayerHandDummy(0);
+        CardDummy _hand = GameManager.Instance.GetPlayerContext(0).Hand;
         var _uiCardDummy = GameManager.Instance.GetUICardDummy();
 
-        _uiCardDummy.Show("추방시킬 카드 한 장을 선택하세요.", _dummy, true, 1);
+        _uiCardDummy.Show("추방시킬 카드 한 장을 선택하세요.", _hand, true, 1);
 
         // 카드 한 장을 선택할 때까지 대기합니다.
         while (_uiCardDummy.GetIsSelectComplete() == false) yield return null;

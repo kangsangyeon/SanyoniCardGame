@@ -1657,15 +1657,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UI_CardDummy: {fileID: 548071830}
-  m_PlayerHandDummyList:
-  - {fileID: 1688515611}
-  - {fileID: 0}
-  m_PlayerDummyList:
-  - {fileID: 1723946871}
-  - {fileID: 0}
-  m_PlayerDiscardDummyList:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_PlayerContextList:
+  - m_Hand: {fileID: 1723946871}
+    m_DrawPile: {fileID: 1723946871}
+    m_DiscardDummy: {fileID: 0}
+    m_Gold: 0
+  - m_Hand: {fileID: 0}
+    m_DrawPile: {fileID: 0}
+    m_DiscardDummy: {fileID: 0}
+    m_Gold: 0
   m_SupplyDummy: {fileID: 0}
   m_OutlandDummy: {fileID: 385801006}
 --- !u!1 &1544784890
@@ -1758,7 +1758,7 @@ PrefabInstance:
       objectReference: {fileID: 264952022}
     - target: {fileID: 241467942717865133, guid: 3a3112db7d7c1044eaea5699827b921c, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 241467942717865133, guid: 3a3112db7d7c1044eaea5699827b921c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1826,7 +1826,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4589000493290876305, guid: 04fb8f5dafb574542918e0e954963fe4, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4589000493290876305, guid: 04fb8f5dafb574542918e0e954963fe4, type: 3}
       propertyPath: m_LocalPosition.x

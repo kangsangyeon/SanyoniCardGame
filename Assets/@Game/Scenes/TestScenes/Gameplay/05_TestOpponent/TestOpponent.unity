@@ -1779,15 +1779,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UI_CardDummy: {fileID: 1734334658}
-  m_PlayerHandDummyList:
-  - {fileID: 1072463849}
-  - {fileID: 567250454}
-  m_PlayerDummyList:
-  - {fileID: 6976021268134510282}
-  - {fileID: 1945496679}
-  m_PlayerDiscardDummyList:
-  - {fileID: 5964664995872432362}
-  - {fileID: 1249028382}
+  m_PlayerContextList:
+  - m_Hand: {fileID: 1072463849}
+    m_DrawPile: {fileID: 6976021268134510282}
+    m_DiscardDummy: {fileID: 5964664995872432362}
+    m_Gold: 0
+  - m_Hand: {fileID: 567250454}
+    m_DrawPile: {fileID: 1945496679}
+    m_DiscardDummy: {fileID: 1249028382}
+    m_Gold: 0
   m_SupplyDummy: {fileID: 0}
   m_OutlandDummy: {fileID: 501208236}
 --- !u!1 &1544784890

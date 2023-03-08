@@ -6,11 +6,13 @@ public class CardOperation_2_Horse : CardOperationBase
 {
     public override IEnumerator Perform(CardGameObject _owner)
     {
+        var _playerContext = GameManager.Instance.GetPlayerContext(0);
+        
         // 내 더미에서 한 장을 가져옵니다.
-        var _card = GameManager.Instance.GetPlayerDummy(0).Draw(1);
+        var _card = _playerContext.DrawPile.Draw(1);
         
         // 내 손패에 넣습니다.
-        GameManager.Instance.GetPlayerHandDummy(0).AddCardList(_card);
+        _playerContext.Hand.AddCardList(_card);
 
         yield return null;
     }
