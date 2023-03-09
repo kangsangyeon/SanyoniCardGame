@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,8 @@ public class PlayerContext
     [SerializeField] private CardDummy m_DrawPile;
     [SerializeField] private CardDummy m_DiscardDummy;
     [SerializeField] private int m_Gold;
+    private List<Card> m_DomainCardList = new List<Card>();
+    private List<Card> m_SuccessionCardList = new List<Card>();
 
     public CardDummy Hand
     {
@@ -36,6 +39,30 @@ public class PlayerContext
             m_Gold = value;
             m_OnChangeValueEvent.Invoke(this);
         }
+    }
+
+    public IReadOnlyList<Card> GetSuccessionCardList() => m_SuccessionCardList;
+
+    public void AddSuccessionCard(Card _card)
+    {
+        m_SuccessionCardList.Add(_card);
+        m_OnChangeValueEvent.Invoke(this);
+    }
+    
+    public IReadOnlyList<Card> GetDomainCardList() => m_DomainCardList;
+
+    public void AddDomainCard(Card _card)
+    {
+        m_DomainCardList.Add(_card);
+        m_OnChangeValueEvent.Invoke(this);
+    }
+
+    public int GetSuccessionPoint()
+    {
+        int _sumOfAllDomainCard = m_DomainCardList.Sum(c => c.GetAttribute().GetSuccessionPoint());
+        int _sumOfAllSuccessionCard = m_SuccessionCardList.Sum(c => c.GetAttribute().GetSuccessionPoint());
+        int _sum = _sumOfAllDomainCard + _sumOfAllSuccessionCard;
+        return _sum;
     }
 
     private UnityEvent<PlayerContext> m_OnChangeValueEvent = new UnityEvent<PlayerContext>();

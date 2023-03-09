@@ -15,6 +15,7 @@ MonoBehaviour:
   m_CardName: "\uB18D\uCD0C"
   m_Thumbnail: {fileID: 0}
   m_Cost: 1
+  m_SuccessionPoint: -2
   m_Link: 1
   m_Type: 16
   m_Description: 

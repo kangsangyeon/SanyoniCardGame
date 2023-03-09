@@ -15,6 +15,7 @@ public class UICanvas_MyStatus : MonoBehaviour
 
     public void Refresh(PlayerContext _playerContext)
     {
+        m_Text_Point.text = _playerContext.GetSuccessionPoint().ToString();
         m_Text_HandCount.text = _playerContext.Hand.GetCardList().Count.ToString();
         m_Text_DrawPileCount.text = _playerContext.DrawPile.GetCardList().Count.ToString();
         m_Text_DiscardCount.text = _playerContext.DiscardDummy.GetCardList().Count.ToString();

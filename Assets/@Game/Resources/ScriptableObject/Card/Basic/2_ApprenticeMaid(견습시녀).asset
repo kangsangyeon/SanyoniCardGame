@@ -15,6 +15,7 @@ MonoBehaviour:
   m_CardName: "\uACAC\uC2B5 \uC2DC\uB140"
   m_Thumbnail: {fileID: 0}
   m_Cost: 2
+  m_SuccessionPoint: -2
   m_Link: 0
   m_Type: 32
   m_Description: 
