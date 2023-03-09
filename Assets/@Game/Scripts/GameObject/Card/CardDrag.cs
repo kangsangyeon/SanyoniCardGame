@@ -65,6 +65,10 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             transform.position = Vector2.Lerp(transform.position, m_DesiredPosition, m_DragLerpSpeed);
             _bMoving |= true;
         }
+        else
+        {
+            transform.position = m_DesiredPosition;
+        }
 
         float _angleDifference = Quaternion.Angle(transform.rotation, m_DesiredRotation);
         if (_angleDifference > 0.1f)
@@ -72,12 +76,20 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             transform.rotation = Quaternion.Slerp(transform.rotation, m_DesiredRotation, m_RotateLerpSpeed);
             _bMoving |= true;
         }
+        else
+        {
+            transform.rotation = m_DesiredRotation;
+        }
 
         float _scaleDifference = Vector2.Distance(transform.localScale, m_DesiredScale);
         if (_scaleDifference > 0.01f)
         {
             transform.localScale = Vector2.Lerp(transform.localScale, m_DesiredScale, m_ScaleLerpSpeed);
             _bMoving |= true;
+        }
+        else
+        {
+            transform.localScale = m_DesiredScale;
         }
 
         if (m_bMovingPrevFrame == true && _bMoving == false)
