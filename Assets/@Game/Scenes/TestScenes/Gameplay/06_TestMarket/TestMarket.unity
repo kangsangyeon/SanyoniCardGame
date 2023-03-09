@@ -974,6 +974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UI_CardDummy: {fileID: 1734334658}
+  m_UI_MyStatus: {fileID: 1700088999}
   m_PlayerContextList:
   - m_Hand: {fileID: 1072463849}
     m_DrawPile: {fileID: 6976021268134510282}
@@ -985,6 +986,17 @@ MonoBehaviour:
     m_Gold: 0
   m_SupplyDummy: {fileID: 0}
   m_OutlandDummy: {fileID: 501208236}
+--- !u!114 &1700088999 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 890684433, guid: 546d40096ec1f9143846cbd2fa7358ad, type: 3}
+  m_PrefabInstance: {fileID: 4913555450060793632}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2218ca3fa4bff7d4fb860fcfee789ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1705441542
 GameObject:
   m_ObjectHideFlags: 0
