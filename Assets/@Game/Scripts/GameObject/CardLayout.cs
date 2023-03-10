@@ -7,8 +7,15 @@ public class CardLayout : MonoBehaviour
 {
     [SerializeField] private float m_BezierCenterDown = 4000;
     [SerializeField] private float m_CardMouseOverUp = 200;
+    [SerializeField] private float m_CardHideHeight = 120;
     [SerializeField] private Bezier m_Bezier;
     private List<CardGameObject> m_CardList = new List<CardGameObject>();
+    private bool m_bVisible = false;
+
+    public void SetVisibility(bool _visible)
+    {
+        m_bVisible = _visible;
+    }
 
     public void AddCard(CardGameObject _cardGameObject)
     {
@@ -69,6 +76,16 @@ public class CardLayout : MonoBehaviour
 
                 _desiredPosition = _position;
                 _desiredRotation = _rotation;
+            }
+
+            if (m_bVisible)
+            {
+                _cardGameObject.SetIsInteractable(true);
+            }
+            else
+            {
+                _cardGameObject.SetIsInteractable(false);
+                _desiredPosition = _desiredPosition + Vector2.down * m_CardHideHeight;
             }
 
             m_CardList[i].GetDrag().SetDesiredPosition(_desiredPosition);

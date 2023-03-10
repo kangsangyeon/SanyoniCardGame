@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -34,6 +35,13 @@ public class CardDummy : MonoBehaviour
             _cardList.Add(Draw());
 
         return _cardList;
+    }
+
+    public void Shuffle()
+    {
+        m_Cards = m_Cards.OrderBy(c => Random.value).ToList();
+        m_Cards = m_Cards.OrderBy(c => Random.value).ToList();
+        m_Cards = m_Cards.OrderBy(c => Random.value).ToList();
     }
 
     public void AddCard(Card _card) => AddCardList(new List<Card>() { _card });
