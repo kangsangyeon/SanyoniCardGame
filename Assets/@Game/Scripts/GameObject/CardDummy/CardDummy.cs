@@ -42,16 +42,16 @@ public class CardDummy : MonoBehaviour
     {
         bool _containsNothing = _cardList.TrueForAll(c => m_Cards.Contains(c) == false);
         Assert.IsTrue(_containsNothing);
-        
+
         // 카드의 더미 위치를 변경합니다.
         _cardList.ForEach(c =>
         {
-            if(c.GetDummy() != null)
+            if (c.GetDummy() != null)
                 c.GetDummy().RemoveCard(c);
 
             c.SetDummy(this);
         });
-        
+
         // 더미에 카드를 추가하고, 카드 추가 이벤트를 호출합니다.
         m_Cards.AddRange(_cardList);
         m_OnAddCardListEvent.Invoke(_cardList);
@@ -63,7 +63,7 @@ public class CardDummy : MonoBehaviour
     {
         bool _containsAll = _cardList.TrueForAll(c => m_Cards.Contains(c));
         Assert.IsTrue(_containsAll);
-        
+
         // 더미의 위치를 변경합니다.
         _cardList.ForEach(c =>
         {

@@ -15,7 +15,7 @@ public class TestDrawFromCardDummy : MonoBehaviour
 
         var _cards = m_Dummy.Draw(5);
         m_Hand.AddCardList(_cards);
-        
+
         m_Dummy.GetComponent<UIAnim_CardDummy>().GetOnClickEvent().AddListener(OnClickDummy);
     }
 
@@ -40,7 +40,6 @@ public class TestDrawFromCardDummy : MonoBehaviour
             _cardGO.transform.position = m_Dummy.transform.position;
             _cardGO.gameObject.SetActive(false);
             _cardGO.SetCard(_card);
-            _card.SetGameObject(_cardGO);
 
             _cardList.Add(_card);
         });

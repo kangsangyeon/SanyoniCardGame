@@ -36,7 +36,6 @@ public class TestCardDummy : MonoBehaviour
             _cardGO.transform.position = m_Dummy.transform.position;
             _cardGO.gameObject.SetActive(false);
             _cardGO.SetCard(_card);
-            _card.SetGameObject(_cardGO);
 
             _cardList.Add(_card);
         });

@@ -18,6 +18,9 @@ public abstract class ObjectPoolBase<T> : MonoBehaviour
     [SerializeField] private int m_MaxPoolSize = 50;
 
     IObjectPool<T> m_Pool;
+    private Vector3 m_OriginPosition;
+    private Quaternion m_OriginRotation;
+    private Vector3 m_OriginScale;
 
     public IObjectPool<T> Pool
     {
@@ -54,7 +57,11 @@ public abstract class ObjectPoolBase<T> : MonoBehaviour
     // Called when an item is taken from the pool using Get
     void OnTakeFromPool(T _component)
     {
-        _component.gameObject.SetActive(true);
+        GameObject _go = _component.gameObject;
+        _go.transform.position = m_OriginPosition;
+        _go.transform.rotation = m_OriginRotation;
+        _go.transform.localScale = m_OriginScale;
+        _go.SetActive(true);
         OnTakeFromPool_Impl(_component);
     }
 
@@ -71,6 +78,13 @@ public abstract class ObjectPoolBase<T> : MonoBehaviour
     {
         Destroy(system.gameObject);
         OnDestroyPoolObject_Impl(system);
+    }
+
+    private void Awake()
+    {
+        m_OriginPosition = m_Prefab.transform.position;
+        m_OriginRotation = m_Prefab.transform.rotation;
+        m_OriginScale = m_Prefab.transform.localScale;
     }
 
     // void OnGUI()

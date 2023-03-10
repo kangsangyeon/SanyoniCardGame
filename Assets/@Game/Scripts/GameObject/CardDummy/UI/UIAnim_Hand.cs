@@ -21,12 +21,23 @@ public class UIAnim_Hand : MonoBehaviour
 
     private void OnAddCardList(List<Card> _cardList)
     {
+        _cardList.ForEach(c =>
+        {
+            c.SetVisibility(true);
+
+            if (c.GetPrevDummy() != null)
+            {
+                Vector2 _desiredPosition = c.GetPrevDummy().transform.position;
+                c.GetGameObject().transform.position = _desiredPosition;
+                c.GetGameObject().GetDrag().SetDesiredPosition(_desiredPosition);
+            }
+        });
         StartCoroutine(DrawAnimationCoroutine(_cardList));
     }
-    
+
     private void OnRemoveCardList(List<Card> _cardList)
     {
-        _cardList.ForEach(c=>m_Layout.RemoveCard(c.GetGameObject()));
+        _cardList.ForEach(c => m_Layout.RemoveCard(c.GetGameObject()));
     }
 
     private IEnumerator DrawAnimationCoroutine(List<Card> _cardList)

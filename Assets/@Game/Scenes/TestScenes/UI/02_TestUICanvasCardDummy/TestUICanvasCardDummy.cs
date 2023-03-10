@@ -16,7 +16,7 @@ public class TestUICanvasCardDummy : MonoBehaviour
 
         // 카드를 5장을 뽑아 손에 듭니다.
         m_Hand.AddCardList(m_Dummy.Draw(5));
-        
+
         // dummy ui를 보여줍니다.
         m_DummyUI.Show("테스트", m_Dummy, false);
     }
@@ -36,7 +36,6 @@ public class TestUICanvasCardDummy : MonoBehaviour
             _cardGO.transform.position = m_Dummy.transform.position;
             _cardGO.gameObject.SetActive(false);
             _cardGO.SetCard(_card);
-            _card.SetGameObject(_cardGO);
 
             _cardList.Add(_card);
         });

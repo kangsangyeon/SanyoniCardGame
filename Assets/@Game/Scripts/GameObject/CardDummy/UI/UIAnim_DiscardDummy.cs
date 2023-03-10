@@ -21,7 +21,7 @@ public class UIAnim_DiscardDummy : MonoBehaviour
         _cardList.ForEach(c =>
         {
             c.GetGameObject().GetDrag().SetDesiredTransform(
-                transform.position, transform.rotation, Vector2.one);
+                transform.position, transform.rotation, transform.localScale);
             c.GetGameObject().GetDrag().GetOnEndMovementEvent().AddListener(OnCardEndMovement);
         });
     }
@@ -29,7 +29,7 @@ public class UIAnim_DiscardDummy : MonoBehaviour
     private void OnCardEndMovement(CardDrag _cardDrag)
     {
         Debug.Log($"UIAnim_DiscardDummy::OnCardEndMovement({_cardDrag.GetCardGO().GetCard().ToString()}) Called.");
-        _cardDrag.SetDesiredScale(Vector2.zero);
+        _cardDrag.GetCardGO().GetCard().SetVisibility(false);
         _cardDrag.GetOnEndMovementEvent().RemoveListener(OnCardEndMovement);
     }
 }
