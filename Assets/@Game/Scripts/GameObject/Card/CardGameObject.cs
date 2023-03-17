@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class CardGameObject : MonoBehaviour
+public class CardGameObject : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private CardDrag m_Drag;
     [SerializeField] private CardRenderOrder m_RenderOrder;
@@ -14,12 +15,14 @@ public class CardGameObject : MonoBehaviour
     private int m_Cost;
     private bool m_bIsInteractable;
     private UnityEvent<bool> m_OnChangeInteractableEvent = new UnityEvent<bool>();
+    private UnityEvent<Card, PointerEventData> m_OnClickEvent = new UnityEvent<Card, PointerEventData>();
 
     public Card GetCard() => m_Card;
     public CardDrag GetDrag() => m_Drag;
     public CardRenderOrder GetRenderOrder() => m_RenderOrder;
     public bool GetIsInteractable() => m_bIsInteractable;
     public UnityEvent<bool> GetOnChangeInteractableEvent() => m_OnChangeInteractableEvent;
+    public UnityEvent<Card, PointerEventData> OnClickEvent => m_OnClickEvent;
 
     public void SetCard(Card _card)
     {
@@ -40,6 +43,8 @@ public class CardGameObject : MonoBehaviour
     {
         return m_Card.GetAttribute().GetCardName();
     }
+
+    public void OnPointerClick(PointerEventData eventData) => m_OnClickEvent.Invoke(m_Card, eventData);
 
     private void Start()
     {

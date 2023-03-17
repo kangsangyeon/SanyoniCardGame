@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private UICanvas_CardDummy m_UI_CardDummy;
     [SerializeField] private UICanvas_MyStatus m_UI_MyStatus;
+    [SerializeField] private UICanvas_PurchaseCard m_UI_PurchaseCard;
 
     [SerializeField] private PlayerContext[] m_PlayerContextList = new PlayerContext[2];
     [SerializeField] private CardDummy m_SupplyDummy;
     [SerializeField] private CardDummy m_OutlandDummy;
     private MarketPair[] m_MarketList = new MarketPair[8];
 
+    public UICanvas_PurchaseCard GetUIPurchaseCard() => m_UI_PurchaseCard;
     public UICanvas_CardDummy GetUICardDummy() => m_UI_CardDummy;
     public PlayerContext GetPlayerContext(int _index) => m_PlayerContextList[_index];
     public CardDummy GetSupplyDummy() => m_SupplyDummy;
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
     {
         // 0번째 플레이어는 자기 자신입니다.
         m_PlayerContextList[0].RemoveEventListeners();
-        
+
         foreach (PlayerContext _context in m_PlayerContextList)
         {
             _context.GetOnChangeValueEvent().RemoveListener(OnChangePlayerContextValue);
